@@ -1,0 +1,6 @@
+glob:*.csproj.user
+glob:*/obj/*
+glob:*/bin/*
+glob:*.ncb
+glob:*.suo
+glob:*.config
