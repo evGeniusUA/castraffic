@@ -16,6 +16,9 @@ namespace TrafficSim
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new TrafficSimGUI());
+            
+            // To be exchanged for
+            //Application.Run( new TrafficSimGUI(new Road(...)) );
         }
     }
 }

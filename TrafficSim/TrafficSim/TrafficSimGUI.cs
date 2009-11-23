@@ -11,9 +11,25 @@ namespace TrafficSim
 {
     public partial class TrafficSimGUI : Form
     {
-        public TrafficSimGUI()
+        public TrafficSimGUI(Road road)
         {
             InitializeComponent();
+        }
+
+        public TrafficSimGUI()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public int Road
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
         }
     }
 }
