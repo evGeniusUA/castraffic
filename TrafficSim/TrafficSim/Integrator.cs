@@ -4,6 +4,7 @@ using System.Text;
 
 namespace TrafficSim
 {
+	//Integrator class
     public static class Integrator
     {
     }
