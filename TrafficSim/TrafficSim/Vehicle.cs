@@ -6,7 +6,7 @@ namespace TrafficSim
 {
     public class Vehicle
     {
-        public double Position
+        public Radian Position  //For circular road in radians
         {
             get
             {
@@ -36,6 +36,18 @@ namespace TrafficSim
             }
             set
             {
+            }
+        }
+
+        public Vehicle NextVehicle
+        {
+            get
+            {
+                return this.NextVehicle;
+            }
+            set
+            {
+                this.NextVehicle = value;
             }
         }
 

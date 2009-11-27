@@ -29,7 +29,7 @@
   <Class Name="TrafficSim.Vehicle">
     <Position X="6.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAJAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAJAAAIAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Vehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -43,7 +43,7 @@
   <Class Name="TrafficSim.Road">
     <Position X="4" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAgAAAAAAAAAAIAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAIAAAAAgAAAAAAAAgAIAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Road.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -59,6 +59,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAACAACACAAAAAAAAAgAAAABAAAA=</HashCode>
       <FileName>RoadViewer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrafficSim.Radian">
+    <Position X="8.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Radian.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Tahoma" Size="8.25" />

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Car.cs" />
     <Compile Include="Integrator.cs" />
+    <Compile Include="Radian.cs" />
     <Compile Include="Road.cs" />
     <Compile Include="RoadViewer.cs">
       <SubType>Component</SubType>

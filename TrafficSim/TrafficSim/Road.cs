@@ -17,7 +17,7 @@ namespace TrafficSim
             }
         }
 
-        public double RoadLength
+        public double RoadRadius
         {
             get
             {
@@ -32,7 +32,7 @@ namespace TrafficSim
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.TimeStepSize;
             }
             set
             {
@@ -41,7 +41,17 @@ namespace TrafficSim
 
         public void Iterate()
         {
-            throw new System.NotImplementedException();
+            // call iterate for all vehicles (calculates new positions)
+            foreach (Vehicle v in this.Vehicles)
+            {
+                v.Iterate(this.TimeStepSize);
+            }
+        }
+
+        public double DistanceBetweenVehicles(Vehicle a, Vehicle b)
+        {
+            Radian alpha = b.Position - a.Position;
+            return alpha.ToDistance(this.RoadRadius);
         }
     }
 }
