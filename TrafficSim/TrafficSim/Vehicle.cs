@@ -18,7 +18,7 @@ namespace TrafficSim
             }
         }
 
-        public float Speed
+        public double Speed
         {
             get
             {
@@ -29,7 +29,7 @@ namespace TrafficSim
             }
         }
 
-        public float Acceleration
+        public double Acceleration
         {
             get
             {
