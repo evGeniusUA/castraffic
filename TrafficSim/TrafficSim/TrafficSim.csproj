@@ -52,12 +52,6 @@
     <Compile Include="Integrator.cs" />
     <Compile Include="Radian.cs" />
     <Compile Include="Road.cs" />
-    <Compile Include="RoadViewer.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="RoadViewer.Designer.cs">
-      <DependentUpon>RoadViewer.cs</DependentUpon>
-    </Compile>
     <Compile Include="TrafficSimGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,10 +63,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RoadViewer.resx">
-      <DependentUpon>RoadViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="TrafficSimGUI.resx">

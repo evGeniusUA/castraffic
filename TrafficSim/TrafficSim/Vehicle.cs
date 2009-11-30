@@ -104,7 +104,7 @@ namespace TrafficSim
             this.Position = this.Position + Radian.FromDistance(distanceToMove, this.Road.RoadRadius);
         }
 
-        public void Iterate(float timeStepSize)
+        public void Iterate(double timeStepSize)
         {
             double distanceToMove = 0.0;
             

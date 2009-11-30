@@ -28,7 +28,7 @@ namespace TrafficSim
             }
         }
 
-        public float TimeStepSize
+        public double TimeStepSize
         {
             get
             {
@@ -39,10 +39,22 @@ namespace TrafficSim
             }
         }
 
-        public Road(double radius, float timeStepSize)
+        public double CurrentSimulationTime
+        {
+            get
+            {
+                return this.CurrentSimulationTime;
+            }
+            set
+            {
+            }
+        }
+
+        public Road(double radius, double timeStepSize, double startingTime)
         {
             this.RoadRadius = radius;
             this.TimeStepSize = timeStepSize;
+            this.CurrentSimulationTime = startingTime;
         }
 
         private void AddVehicle(Vehicle vehicle)
@@ -72,6 +84,7 @@ namespace TrafficSim
             {
                 v.Iterate(this.TimeStepSize);
             }
+            this.CurrentSimulationTime += this.TimeStepSize;
         }
 
     }

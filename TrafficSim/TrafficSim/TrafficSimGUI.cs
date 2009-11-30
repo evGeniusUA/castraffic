@@ -13,19 +13,15 @@ namespace TrafficSim
     {
         public TrafficSimGUI(Road road)
         {
+            this.Road = road;
             InitializeComponent();
         }
 
-        public TrafficSimGUI()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public int Road
+        private Road Road
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.Road;
             }
             set
             {

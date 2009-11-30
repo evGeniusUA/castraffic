@@ -13,12 +13,11 @@ namespace TrafficSim
         [STAThread]
         static void Main()
         {
+            Road road = new Road(1000.0 / (2 * Math.PI), 0.1, 0.0);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TrafficSimGUI());
-            
-            // To be exchanged for
-            //Application.Run( new TrafficSimGUI(new Road(...)) );
+            Application.Run(new TrafficSimGUI(road));
         }
     }
 }
