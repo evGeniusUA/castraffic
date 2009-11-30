@@ -45,6 +45,26 @@ namespace TrafficSim
             this.TimeStepSize = timeStepSize;
         }
 
+        private void AddVehicle(Vehicle vehicle)
+        {
+            vehicle.NextVehicle = this.Vehicles.Last.Value;
+            this.Vehicles.First.Value.NextVehicle = vehicle;
+            this.Vehicles.AddLast(vehicle);
+        }
+
+        public void Populate(int numberOfVehicles)
+        {
+            // Toy function which just adds cars at evenly distributed around the road
+
+            for (int i = 0; i < numberOfVehicles; i++)
+            {
+                Car newVehicle = new Car(this);
+                newVehicle.Position = new Radian(i * 2 * Math.PI / numberOfVehicles);
+                this.AddVehicle(newVehicle);
+            }
+
+        }
+
         public void Iterate()
         {
             // call iterate for all vehicles (calculates new positions)
@@ -53,5 +73,6 @@ namespace TrafficSim
                 v.Iterate(this.TimeStepSize);
             }
         }
+
     }
 }

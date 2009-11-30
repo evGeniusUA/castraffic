@@ -14,6 +14,7 @@ namespace TrafficSim
             }
             set
             {
+                this.Position = value;
             }
         }
 
@@ -62,13 +63,34 @@ namespace TrafficSim
             }
         }
 
+        public double Width
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public double Length
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
         // Constructor - add needed arguments
         // After constructing Vehicle object, don't forget to add NextVehicle...
         // You also need to modify Car constructor and other classes extending this
-        public Vehicle(Road road, Radian initialPosition)
+        public Vehicle(Road road)
         {
             this.Road = road;
-            this.Position = initialPosition;
         }
 
         public double DistanceToNextVehicle()

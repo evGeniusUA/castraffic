@@ -29,12 +29,18 @@
   <Class Name="TrafficSim.Vehicle">
     <Position X="6.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAJAAAIAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAAAAAAAAgIAIAAEBJAAAIAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Vehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TrafficSim.Car">
-    <Position X="6.25" Y="4" Width="1.5" />
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <InheritanceLine Type="TrafficSim.Vehicle" FixedToPoint="true">
+      <Path>
+        <Point X="7" Y="4.092" />
+        <Point X="7" Y="4.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Car.cs</FileName>
@@ -43,7 +49,7 @@
   <Class Name="TrafficSim.Road">
     <Position X="4" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAgAAAAAAAAgAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>CAAAAAIAAAAAgAAAAAAAAgAIAAAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Road.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -64,7 +70,7 @@
   <Class Name="TrafficSim.Radian">
     <Position X="8.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgIAAAAAQAEAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>Radian.cs</FileName>
     </TypeIdentifier>
   </Class>
