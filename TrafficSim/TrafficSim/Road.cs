@@ -10,7 +10,7 @@ namespace TrafficSim
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.Vehicles;
             }
             set
             {
@@ -21,7 +21,7 @@ namespace TrafficSim
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.RoadRadius;
             }
             set
             {
@@ -39,6 +39,12 @@ namespace TrafficSim
             }
         }
 
+        public Road(double radius, float timeStepSize)
+        {
+            this.RoadRadius = radius;
+            this.TimeStepSize = timeStepSize;
+        }
+
         public void Iterate()
         {
             // call iterate for all vehicles (calculates new positions)
@@ -46,12 +52,6 @@ namespace TrafficSim
             {
                 v.Iterate(this.TimeStepSize);
             }
-        }
-
-        public double DistanceBetweenVehicles(Vehicle a, Vehicle b)
-        {
-            Radian alpha = b.Position - a.Position;
-            return alpha.ToDistance(this.RoadRadius);
         }
     }
 }
