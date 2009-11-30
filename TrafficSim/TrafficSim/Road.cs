@@ -59,9 +59,16 @@ namespace TrafficSim
 
         private void AddVehicle(Vehicle vehicle)
         {
-            vehicle.NextVehicle = this.Vehicles.Last.Value;
-            this.Vehicles.First.Value.NextVehicle = vehicle;
-            this.Vehicles.AddLast(vehicle);
+            if (this.Vehicles.Count == 0)
+            {
+                this.Vehicles.AddLast(vehicle);
+            }
+            else
+            {
+                vehicle.NextVehicle = this.Vehicles.Last.Value;
+                this.Vehicles.First.Value.NextVehicle = vehicle;
+                this.Vehicles.AddLast(vehicle);
+            }
         }
 
         public void Populate(int numberOfVehicles)
