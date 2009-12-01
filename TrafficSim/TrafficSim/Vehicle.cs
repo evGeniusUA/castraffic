@@ -18,7 +18,7 @@ namespace TrafficSim
             }
         }
 
-        public double Speed
+        public double Velocity
         {
             get
             {
@@ -107,7 +107,21 @@ namespace TrafficSim
         public void Iterate(double timeStepSize)
         {
             double distanceToMove = 0.0;
-            
+
+            double desiredVelocity = 120;
+            double delta = 4;   //Constant between 1-5, "behaviour of driver"
+            double a = 0.6; //Maximum acceleration
+            double b = 0.9; //Maximum brake
+            double s0 = 2; //Minimum gap
+            double T = 1.5; //Time headway
+            double deltaV = this.Velocity - this.NextVehicle.Velocity; //Difference in velocity
+                    
+            double sa = DistanceToNextVehicle() - this.Length; //Gap = distance to vehicle in front, bumper to bumper
+            double sStar = s0+Math.Max(this.Velocity*T+this.Velocity*deltaV/(2*Math.Sqrt(a*b)),0); //Effective desired distance
+            double acc = a * (1 - Math.Pow(this.Velocity / desiredVelocity, delta) - Math.Pow(sStar / sa, 2)); //Acceleration
+            this.Velocity = acc * timeStepSize; //Update velocity
+            distanceToMove = this.Velocity * timeStepSize; //Update movement
+
             throw new System.NotImplementedException();
             // do stuff with dynamics, behaviour ...
             // Use Integrator.integrat(...) to get new position / speed
