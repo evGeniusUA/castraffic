@@ -29,6 +29,11 @@ namespace TrafficSim
             return this.Rad * radius;
         }
 
+        public double ToDegrees()
+        {
+            return this.Rad * 180 / Math.PI;
+        }
+
         public static Radian FromDistance(double distance, double radius)
         {
             return new Radian(distance/radius);
