@@ -6,91 +6,78 @@ namespace TrafficSim
 {
     public class Vehicle
     {
-        public Radian Position  //For circular road in radians
-        {
-            get
-            {
-                return this.Position;
-            }
-            set
-            {
-                this.Position = value;
-            }
-        }
+        #region Properties
+        public Radian Position { get; set; } //For circular road in radians
 
+        protected double velocity;
         public double Velocity
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.velocity;
             }
             set
             {
             }
         }
 
+        protected double acceleration;
         public double Acceleration
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.acceleration;
             }
             set
             {
             }
         }
 
-        public Vehicle NextVehicle
-        {
-            get
-            {
-                return this.NextVehicle;
-            }
-            set
-            {
-                this.NextVehicle = value;
-            }
-        }
+        public Vehicle NextVehicle { get; set; }
 
+        protected Road road;
         public Road Road
         {
             get
             {
-                return this.Road;
+                return this.road;
             }
             set
             {
             }
         }
 
+        protected double width = 2.0;
         public double Width
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.width;
             }
             set
             {
             }
         }
 
+        protected double length = 5.0;
         public double Length
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.length;
             }
             set
             {
             }
         }
+        #endregion
 
         // Constructor - add needed arguments
         // After constructing Vehicle object, don't forget to add NextVehicle...
         // You also need to modify Car constructor and other classes extending this
         public Vehicle(Road road)
         {
-            this.Road = road;
+            this.road = road;
         }
 
         public double DistanceToNextVehicle()
@@ -106,8 +93,6 @@ namespace TrafficSim
 
         public void Iterate(double timeStepSize)
         {
-            double distanceToMove = 0.0;
-
             double v0 = 120;
             double delta = 4;   //Constant between 1-5, "behaviour of driver"
             double a = 0.6; //Maximum acceleration
@@ -119,15 +104,9 @@ namespace TrafficSim
             double sa = DistanceToNextVehicle() - this.Length; //Gap = distance to vehicle in front, bumper to bumper
             double sStar = s0+Math.Max(this.Velocity*T+this.Velocity*deltaV/(2*Math.Sqrt(a*b)),0); //Effective desired distance
 
-            this.Acceleration = a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2)); //Update acceleration
-            this.Velocity = this.Acceleration * timeStepSize; //Update velocity
-            distanceToMove = this.Velocity * timeStepSize; //Update movement
-
-            throw new System.NotImplementedException();
-            // do stuff with dynamics, behaviour ...
-            // Use Integrator.integrat(...) to get new position / speed
-            // Set new pos with:
-            // this.MoveToNewPos(distanceToMove);
+            this.acceleration = a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2)); //Update acceleration
+            this.velocity = this.Acceleration * timeStepSize; //Update velocity
+            this.MoveToNewPos(this.Velocity * timeStepSize); //Update movement
         }
     }
 }

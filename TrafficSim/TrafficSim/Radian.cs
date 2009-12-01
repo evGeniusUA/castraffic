@@ -7,36 +7,26 @@ namespace TrafficSim
     public class Radian
     {
 
-        public double value
-        {
-            get
-            {
-                return this.value;
-            }
-            set
-            {
-                this.value = value;
-            }
-        }
+        public double Rad { get; set; }
 
-        public Radian(double val)
+        public Radian(double r)
         {
-            this.value = val;
+            this.Rad = r;
         }
 
         public static Radian operator +(Radian a, Radian b)
         {
-            return new Radian((a.value + b.value) % 2 * Math.PI);
+            return new Radian((a.Rad + b.Rad) % 2 * Math.PI);
         }
         
         public static Radian operator -(Radian a, Radian b)
         {
-            return new Radian((a.value - b.value) % 2 * Math.PI);
+            return new Radian((a.Rad - b.Rad) % 2 * Math.PI);
         }
 
         public double ToDistance(double radius)
         {
-            return this.value * radius;
+            return this.Rad * radius;
         }
 
         public static Radian FromDistance(double distance, double radius)

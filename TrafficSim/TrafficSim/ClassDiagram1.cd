@@ -15,7 +15,7 @@
   <Class Name="TrafficSim.TrafficSimGUI">
     <Position X="0.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAIACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ABAAAAAAACAAAAAAAACAACACAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>TrafficSimGUI.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -27,43 +27,30 @@
     </TypeIdentifier>
   </Class>
   <Class Name="TrafficSim.Vehicle">
-    <Position X="6.25" Y="1.25" Width="1.5" />
+    <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAgIAIAAEBJAAAIAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAAAAAAAAgYEIAAGBIAAAIAAQAAAQEAAAEAAA=</HashCode>
       <FileName>Vehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TrafficSim.Car">
-    <Position X="6.25" Y="4.75" Width="1.5" />
-    <InheritanceLine Type="TrafficSim.Vehicle" FixedToPoint="true">
-      <Path>
-        <Point X="7" Y="4.092" />
-        <Point X="7" Y="4.75" />
-      </Path>
-    </InheritanceLine>
+    <Position X="4.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Car.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TrafficSim.Road">
-    <Position X="4" Y="1.25" Width="1.5" />
+    <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAYAAAAAgAAAAAAAAgAIAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <HashCode>CAAAAAaAAAACgAAAQAAAAkAIAAIAAABAAgAAAAAAAAA=</HashCode>
       <FileName>Road.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TrafficSim.Integrator">
-    <Position X="8.5" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Integrator.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="TrafficSim.Radian">
-    <Position X="8.5" Y="2.25" Width="1.5" />
+    <Position X="7.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgIAAAAAQAEAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgIACAAAQAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Radian.cs</FileName>
     </TypeIdentifier>
   </Class>

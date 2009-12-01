@@ -13,28 +13,23 @@ namespace TrafficSim
     {
         public TrafficSimGUI(Road road)
         {
-            this.Road = road;
+            this.road = road;
             InitializeComponent();
+            this.Paint += new PaintEventHandler(panel1_Paint);
         }
 
-        private Road Road
-        {
-            get
-            {
-                return this.Road;
-            }
-            set
-            {
-            }
-        }
+        private Road road;
 
         #region Graphics
-
-        #endregion
-
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            //repaint all cars...
+            Graphics g = e.Graphics;
+            float w = Math.Min(panel1.Width, panel1.Height);
+            float scale = w / ((float)this.road.RoadRadius * 2);
+
+            g.DrawEllipse(new Pen(Color.Black, (float)this.road.Width * scale), 0, 0, w, w);
+
         }
+        #endregion
     }
 }

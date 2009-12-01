@@ -8,8 +8,8 @@ namespace TrafficSim
     {
         public Car(Road road) : base(road)
         {
-            this.Length = 5.0;
-            this.Width = 1.8;
+            this.length = 5.0;
+            this.width = 1.8;
         }
     }
 }

@@ -6,55 +6,76 @@ namespace TrafficSim
 {
     public class Road
     {
+        #region Properties
+        
+        private LinkedList<Vehicle> vehicles;
         public LinkedList<Vehicle> Vehicles
         {
             get
             {
-                return this.Vehicles;
+                return this.vehicles;
             }
             set
             {
             }
         }
 
+        private double roadRadius;
         public double RoadRadius
         {
             get
             {
-                return this.RoadRadius;
+                return this.roadRadius;
             }
             set
             {
             }
         }
 
+        private double width;
+        public double Width
+        {
+            get
+            {
+                return this.width;
+            }
+            set
+            {
+            }
+        }
+
+        private double timeStepSize;
         public double TimeStepSize
         {
             get
             {
-                return this.TimeStepSize;
+                return this.timeStepSize;
             }
             set
             {
             }
         }
 
+        private double currentSimulationTime;
         public double CurrentSimulationTime
         {
             get
             {
-                return this.CurrentSimulationTime;
+                return this.currentSimulationTime;
             }
             set
             {
             }
         }
+        #endregion
 
-        public Road(double radius, double timeStepSize, double startingTime)
+        public Road(double radius, double width, double timeStepSize, double startingTime)
         {
-            this.RoadRadius = radius;
-            this.TimeStepSize = timeStepSize;
-            this.CurrentSimulationTime = startingTime;
+            this.roadRadius = radius;
+            this.width = width;
+            this.timeStepSize = timeStepSize;
+            this.currentSimulationTime = startingTime;
+            this.vehicles = new LinkedList<Vehicle>();
         }
 
         private void AddVehicle(Vehicle vehicle)
