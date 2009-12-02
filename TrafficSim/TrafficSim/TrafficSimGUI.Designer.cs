@@ -46,12 +46,17 @@
             this.radio_simspeed10 = new System.Windows.Forms.RadioButton();
             this.radio_simspeed5 = new System.Windows.Forms.RadioButton();
             this.radio_simspeed1 = new System.Windows.Forms.RadioButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.numeric_speedLimit = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_cars)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_speedLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -240,11 +245,61 @@
             this.radio_simspeed1.UseVisualStyleBackColor = true;
             this.radio_simspeed1.CheckedChanged += new System.EventHandler(this.radio_simspeed1_CheckedChanged);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.numeric_speedLimit);
+            this.groupBox4.Location = new System.Drawing.Point(362, 232);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(96, 52);
+            this.groupBox4.TabIndex = 4;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Speed Limit";
+            // 
+            // numeric_speedLimit
+            // 
+            this.numeric_speedLimit.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numeric_speedLimit.Location = new System.Drawing.Point(6, 19);
+            this.numeric_speedLimit.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.numeric_speedLimit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numeric_speedLimit.Name = "numeric_speedLimit";
+            this.numeric_speedLimit.Size = new System.Drawing.Size(54, 20);
+            this.numeric_speedLimit.TabIndex = 0;
+            this.numeric_speedLimit.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numeric_speedLimit.ValueChanged += new System.EventHandler(this.numeric_speedLimit_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(61, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "km/h";
+            // 
             // TrafficSimGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(470, 400);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.toolStrip1);
@@ -262,6 +317,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numeric_cars)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_speedLimit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,6 +343,9 @@
         private System.Windows.Forms.RadioButton radio_simspeed1;
         private System.Windows.Forms.RadioButton radio_simspeed10;
         private System.Windows.Forms.RadioButton radio_simspeed5;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numeric_speedLimit;
 
     }
 }

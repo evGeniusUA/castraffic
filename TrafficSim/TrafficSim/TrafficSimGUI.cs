@@ -34,6 +34,7 @@ namespace TrafficSim
             pictureBox1.Paint += new PaintEventHandler(pictureBox1_Paint);
             label_simtime.Text = this.road.CurrentSimulationTime.ToString("F2");
             numeric_cars.Value = this.road.NumberOfVehicles;
+            numeric_speedLimit.Value = (int)this.road.DesiredVelocityKmH;
         }
 
         #region Graphics
@@ -95,13 +96,18 @@ namespace TrafficSim
         private void button_reset_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            this.road = new Road(this.road.RoadRadius, this.road.Width, this.road.TimeStepSize, 0.0, this.road.DesiredVelocity);
+            this.road = new Road(this.road.RoadRadius, this.road.Width, this.road.TimeStepSize, 0.0, (double)this.numeric_speedLimit.Value / 3.6);
             label_simtime.Text = this.road.CurrentSimulationTime.ToString("F2");
             this.road.Populate((int)numeric_cars.Value);
             pictureBox1.Refresh();
         }
 
         private void numeric_cars_ValueChanged(object sender, EventArgs e)
+        {
+            this.button_reset_Click(sender, e);
+        }
+
+        private void numeric_speedLimit_ValueChanged(object sender, EventArgs e)
         {
             this.button_reset_Click(sender, e);
         }
