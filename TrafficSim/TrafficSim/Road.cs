@@ -98,8 +98,8 @@ namespace TrafficSim
             }
             else
             {
-                vehicle.NextVehicle = this.Vehicles.Last.Value;
-                this.Vehicles.First.Value.NextVehicle = vehicle;
+                vehicle.NextVehicle = this.Vehicles.First.Value;             
+                this.Vehicles.Last.Value.NextVehicle = vehicle;                
                 this.Vehicles.AddLast(vehicle);
             }
         }
