@@ -70,14 +70,40 @@ namespace TrafficSim
             {
             }
         }
+       
+        protected double maxAcceleration = 3.0;
+        public double MaxAcceleration
+        {
+            get
+            {
+                return this.maxAcceleration;
+            }
+            set
+            {
+            }
+        }
+        
+        protected double maxBrake = 0.9;
+        public double MaxBrake
+        {
+            get
+            {
+                return this.maxBrake;
+            }
+            set
+            {
+            }
+        }
         #endregion
 
         // Constructor - add needed arguments
         // After constructing Vehicle object, don't forget to add NextVehicle...
         // You also need to modify Car constructor and other classes extending this
-        public Vehicle(Road road)
+        public Vehicle(Road road, double maxAcc, double maxBrake)
         {
             this.road = road;
+            this.maxAcceleration = maxAcc;
+            this.maxBrake = maxBrake;
         }
 
         public double DistanceToNextVehicle()
@@ -93,13 +119,12 @@ namespace TrafficSim
 
         public void Iterate(double timeStepSize)
         {
-            Random r = new Random(DateTime.Now.Millisecond);
             double v0 = this.road.DesiredVelocity;
             double delta = 4;   //Constant between 1-5, "behaviour of driver"
-            double a = 3.5 + 0.5 * (r.NextDouble() - 0.5); //Maximum acceleration
-            double b = 0.9; //Maximum brake
+            double a = this.MaxAcceleration; //Maximum acceleration
+            double b = this.MaxBrake; //Maximum brake
             double s0 = 2; //Minimum gap
-            double T = 1.5+1*(r.NextDouble()-0.5); //Time headway
+            double T = 1.5; //Time headway
             double deltaV = this.Velocity - this.NextVehicle.Velocity; //Difference in velocity
                     
             double sa = DistanceToNextVehicle() - this.Length; //Gap = distance to vehicle in front, bumper to bumper

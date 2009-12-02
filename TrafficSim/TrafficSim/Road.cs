@@ -153,10 +153,12 @@ namespace TrafficSim
         public void Populate(int numberOfVehicles)
         {
             Debug.Assert(numberOfVehicles > 1, "Number of Vehicles must be > 1");
+            Random r = new Random(DateTime.Now.Millisecond);
 
             for (int i = 0; i < numberOfVehicles; i++)
             {
-                Car newVehicle = new Car(this);
+                Car newVehicle = new Car(this, 3.0 + (r.NextDouble() - 0.5) * 2, 0.9);
+                //double rd = Radian.FromDistance(r.NextDouble() - 0.5, this.RoadRadius).Rad; //+- 0.5 m
                 newVehicle.Position = new Radian(i * 2 * Math.PI / numberOfVehicles);
                 this.AddVehicle(newVehicle);
             }
