@@ -146,7 +146,7 @@ namespace TrafficSim
             this.acceleration = a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2)); //Update acceleration
             this.velocity += this.Acceleration * timeStepSize; //Update velocity
             this.velocity = Math.Max(this.Velocity, 0);
-            this.MoveToNewPos(this.Velocity * timeStepSize); //Update movement
+            this.MoveToNewPos(this.Velocity * timeStepSize+ (1/2) * this.Acceleration * Math.Pow(timeStepSize,2)); //Update movement
         }
     }
 }
