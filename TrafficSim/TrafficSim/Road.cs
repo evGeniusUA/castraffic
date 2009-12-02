@@ -79,15 +79,48 @@ namespace TrafficSim
             {
             }
         }
+
+        private double desiredVelocity;
+        public double DesiredVelocity
+        {
+            get
+            {
+                return this.desiredVelocity;
+            }
+            set
+            {
+                this.desiredVelocity = value;
+            }
+        }
+        
+        public double DesiredVelocityKmH
+        {
+            get
+            {
+                return this.desiredVelocity * 3.6;
+            }
+            set
+            {
+                this.desiredVelocity = value / 3.6;
+            }
+        }
+
+
         #endregion
 
-        public Road(double radius, double width, double timeStepSize, double startingTime)
+        public Road(double radius, double width, double timeStepSize, double startingTime, double maxV)
         {
             this.roadRadius = radius;
             this.width = width;
             this.timeStepSize = timeStepSize;
             this.currentSimulationTime = startingTime;
             this.vehicles = new LinkedList<Vehicle>();
+            this.desiredVelocity = maxV;
+        }
+
+        public Road() : this (230 / (2 * Math.PI), 3.0, 0.1, 0.0, 33.33)
+        {
+            // Standard parameters
         }
 
         private void AddVehicle(Vehicle vehicle)
