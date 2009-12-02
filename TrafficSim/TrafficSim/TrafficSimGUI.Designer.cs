@@ -52,6 +52,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label_avgv = new System.Windows.Forms.Label();
+            this.radio_simspeed30 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -171,7 +172,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.numeric_cars);
-            this.groupBox2.Location = new System.Drawing.Point(362, 174);
+            this.groupBox2.Location = new System.Drawing.Point(362, 194);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(96, 52);
             this.groupBox2.TabIndex = 3;
@@ -204,12 +205,13 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.radio_simspeed30);
             this.groupBox3.Controls.Add(this.radio_simspeed10);
             this.groupBox3.Controls.Add(this.radio_simspeed5);
             this.groupBox3.Controls.Add(this.radio_simspeed1);
             this.groupBox3.Location = new System.Drawing.Point(362, 75);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(96, 93);
+            this.groupBox3.Size = new System.Drawing.Size(96, 113);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Sim Speed";
@@ -254,7 +256,7 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.numeric_speedLimit);
-            this.groupBox4.Location = new System.Drawing.Point(362, 232);
+            this.groupBox4.Location = new System.Drawing.Point(362, 252);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(96, 52);
             this.groupBox4.TabIndex = 4;
@@ -303,7 +305,7 @@
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.label_avgv);
-            this.groupBox5.Location = new System.Drawing.Point(362, 290);
+            this.groupBox5.Location = new System.Drawing.Point(362, 310);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(96, 40);
             this.groupBox5.TabIndex = 2;
@@ -331,6 +333,17 @@
             this.label_avgv.TabIndex = 0;
             this.label_avgv.Text = "0.0";
             this.label_avgv.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // radio_simspeed30
+            // 
+            this.radio_simspeed30.AutoSize = true;
+            this.radio_simspeed30.Location = new System.Drawing.Point(15, 88);
+            this.radio_simspeed30.Name = "radio_simspeed30";
+            this.radio_simspeed30.Size = new System.Drawing.Size(45, 17);
+            this.radio_simspeed30.TabIndex = 3;
+            this.radio_simspeed30.Text = "x 30";
+            this.radio_simspeed30.UseVisualStyleBackColor = true;
+            this.radio_simspeed30.CheckedChanged += new System.EventHandler(this.radio_simspeed30_CheckedChanged);
             // 
             // TrafficSimGUI
             // 
@@ -390,6 +403,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label_avgv;
+        private System.Windows.Forms.RadioButton radio_simspeed30;
 
     }
 }

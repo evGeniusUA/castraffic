@@ -131,7 +131,7 @@ namespace TrafficSim
             this.desiredVelocity = maxV;
         }
 
-        public Road() : this (500 / (2 * Math.PI), 3.0, 0.05, 0.0, 100/3.6)
+        public Road() : this (500 / (2 * Math.PI), 3.5, 0.05, 0.0, 100/3.6)
         {
             // Standard parameters
         }
@@ -157,8 +157,7 @@ namespace TrafficSim
 
             for (int i = 0; i < numberOfVehicles; i++)
             {
-                Car newVehicle = new Car(this, 3.0 + (r.NextDouble() - 0.5) * 2, 0.9);
-                //double rd = Radian.FromDistance(r.NextDouble() - 0.5, this.RoadRadius).Rad; //+- 0.5 m
+                Car newVehicle = new Car(this, 1.0 + (r.NextDouble() - 0.5), 1.5, r.NextDouble());
                 newVehicle.Position = new Radian(i * 2 * Math.PI / numberOfVehicles);
                 this.AddVehicle(newVehicle);
             }
