@@ -53,6 +53,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label_avgv = new System.Windows.Forms.Label();
             this.radio_simspeed30 = new System.Windows.Forms.RadioButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.button_save = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -121,7 +123,9 @@
             this.button_play,
             this.toolStripButton1,
             this.button_pause,
-            this.button_reset});
+            this.button_reset,
+            this.toolStripSeparator1,
+            this.button_save});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(470, 25);
@@ -345,6 +349,21 @@
             this.radio_simspeed30.UseVisualStyleBackColor = true;
             this.radio_simspeed30.CheckedChanged += new System.EventHandler(this.radio_simspeed30_CheckedChanged);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // button_save
+            // 
+            this.button_save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.button_save.Image = ((System.Drawing.Image)(resources.GetObject("button_save.Image")));
+            this.button_save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.button_save.Name = "button_save";
+            this.button_save.Size = new System.Drawing.Size(23, 22);
+            this.button_save.Text = "Export Simulation-data to Matlab";
+            this.button_save.Click += new System.EventHandler(this.button_save_Click);
+            // 
             // TrafficSimGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -404,6 +423,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label_avgv;
         private System.Windows.Forms.RadioButton radio_simspeed30;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton button_save;
 
     }
 }
