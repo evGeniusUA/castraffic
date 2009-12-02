@@ -120,6 +120,7 @@ namespace TrafficSim
         public void Iterate()
         {
             // call iterate for all vehicles (calculates new positions)
+            Debug.Assert(this.NumberOfVehicles > 1, "No vehicles to iterate");
             foreach (Vehicle v in this.Vehicles)
             {
                 v.Iterate(this.TimeStepSize);
