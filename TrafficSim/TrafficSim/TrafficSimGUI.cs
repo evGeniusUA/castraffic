@@ -33,6 +33,7 @@ namespace TrafficSim
             timer1.Interval = (int)(road.TimeStepSize * 1000);
             pictureBox1.Paint += new PaintEventHandler(pictureBox1_Paint);
             label_simtime.Text = this.road.CurrentSimulationTime.ToString("F2");
+            label_avgv.Text = this.road.AverageVelocityKmH.ToString("F1");
             numeric_cars.Value = this.road.NumberOfVehicles;
             numeric_speedLimit.Value = (int)this.road.DesiredVelocityKmH;
         }
@@ -78,6 +79,7 @@ namespace TrafficSim
 
             pictureBox1.Refresh();
             label_simtime.Text = this.road.CurrentSimulationTime.ToString("F2");
+            label_avgv.Text = this.road.AverageVelocityKmH.ToString("F1");
         }
         #endregion
 
