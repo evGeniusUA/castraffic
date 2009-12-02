@@ -89,7 +89,6 @@ namespace TrafficSim
             }
             set
             {
-                this.desiredVelocity = value;
             }
         }
         
@@ -101,7 +100,6 @@ namespace TrafficSim
             }
             set
             {
-                this.desiredVelocity = value / 3.6;
             }
         }
 
@@ -118,7 +116,7 @@ namespace TrafficSim
             this.desiredVelocity = maxV;
         }
 
-        public Road() : this (230 / (2 * Math.PI), 3.0, 0.05, 0.0, 33.33)
+        public Road() : this (500 / (2 * Math.PI), 3.0, 0.05, 0.0, 100/3.6)
         {
             // Standard parameters
         }
