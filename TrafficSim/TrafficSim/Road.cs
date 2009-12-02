@@ -157,7 +157,7 @@ namespace TrafficSim
 
             for (int i = 0; i < numberOfVehicles; i++)
             {
-                Car newVehicle = new Car(this, 1.0 + (r.NextDouble() - 0.5), 1.5, r.NextDouble());
+                Car newVehicle = new Car(this, 1.0 + (r.NextDouble() - 0.5), 2.0, r.NextDouble());
                 newVehicle.Position = new Radian(i * 2 * Math.PI / numberOfVehicles);
                 this.AddVehicle(newVehicle);
             }
