@@ -93,7 +93,7 @@ namespace TrafficSim
 
         public void Iterate(double timeStepSize)
         {
-            double v0 = 33.33;
+            double v0 = this.road.DesiredVelocity;
             double delta = 4;   //Constant between 1-5, "behaviour of driver"
             double a = 3; //Maximum acceleration
             double b = 0.9; //Maximum brake

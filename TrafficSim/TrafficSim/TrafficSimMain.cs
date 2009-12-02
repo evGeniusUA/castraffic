@@ -13,7 +13,7 @@ namespace TrafficSim
         [STAThread]
         static void Main()
         {
-            Road road = new Road(230.0 / (2 * Math.PI), 3.0, 0.1, 0.0);
+            Road road = new Road();
             road.Populate(20);
 
             Application.EnableVisualStyles();

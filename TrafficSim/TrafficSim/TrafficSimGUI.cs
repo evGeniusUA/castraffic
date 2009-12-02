@@ -77,7 +77,7 @@ namespace TrafficSim
         private void button_reset_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            this.road = new Road(this.road.RoadRadius, this.road.Width, this.road.TimeStepSize, 0.0);
+            this.road = new Road(this.road.RoadRadius, this.road.Width, this.road.TimeStepSize, 0.0, this.road.DesiredVelocity);
             label_simtime.Text = this.road.CurrentSimulationTime.ToString("F2");
             this.road.Populate((int)numeric_cars.Value);
             pictureBox1.Refresh();
