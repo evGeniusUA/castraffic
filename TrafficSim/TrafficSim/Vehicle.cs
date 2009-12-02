@@ -93,9 +93,9 @@ namespace TrafficSim
 
         public void Iterate(double timeStepSize)
         {
-            double v0 = 120;
+            double v0 = 33.33;
             double delta = 4;   //Constant between 1-5, "behaviour of driver"
-            double a = 0.6; //Maximum acceleration
+            double a = 3; //Maximum acceleration
             double b = 0.9; //Maximum brake
             double s0 = 2; //Minimum gap
             double T = 1.5; //Time headway
@@ -105,7 +105,7 @@ namespace TrafficSim
             double sStar = s0+Math.Max(this.Velocity*T+this.Velocity*deltaV/(2*Math.Sqrt(a*b)),0); //Effective desired distance
 
             this.acceleration = a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2)); //Update acceleration
-            this.velocity = this.Acceleration * timeStepSize; //Update velocity
+            this.velocity += this.Acceleration * timeStepSize; //Update velocity
             this.MoveToNewPos(this.Velocity * timeStepSize); //Update movement
         }
     }

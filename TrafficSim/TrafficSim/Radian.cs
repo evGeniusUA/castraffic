@@ -16,12 +16,12 @@ namespace TrafficSim
 
         public static Radian operator +(Radian a, Radian b)
         {
-            return new Radian((a.Rad + b.Rad) % 2 * Math.PI);
+            return new Radian((a.Rad + b.Rad) % (2 * Math.PI));
         }
         
         public static Radian operator -(Radian a, Radian b)
         {
-            return new Radian((a.Rad - b.Rad) % 2 * Math.PI);
+            return new Radian((a.Rad - b.Rad) % (2 * Math.PI));
         }
 
         public double ToDistance(double radius)
@@ -36,7 +36,7 @@ namespace TrafficSim
 
         public static Radian FromDistance(double distance, double radius)
         {
-            return new Radian((distance / radius) % 2 * Math.PI);
+            return new Radian((distance / radius) % (2 * Math.PI));
         }
     }
 }
