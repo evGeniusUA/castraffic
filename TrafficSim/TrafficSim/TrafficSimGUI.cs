@@ -12,14 +12,17 @@ namespace TrafficSim
 {
     public partial class TrafficSimGUI : Form
     {
+        private Road road;
+
         public TrafficSimGUI(Road road)
         {
             this.road = road;
             InitializeComponent();
+            timer1.Interval = (int)(road.TimeStepSize * 1000);
             pictureBox1.Paint += new PaintEventHandler(pictureBox1_Paint);
+            label_simtime.Text = this.road.CurrentSimulationTime.ToString("F2");
+            numeric_cars.Value = this.road.NumberOfVehicles;
         }
-
-        private Road road;
 
         #region Graphics
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -49,6 +52,45 @@ namespace TrafficSim
                 g.FillPolygon(new SolidBrush(Color.Red), carModel);
             }
 
+        }
+        #endregion
+
+        #region buttons
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.road.Iterate();
+            pictureBox1.Refresh();
+            label_simtime.Text = this.road.CurrentSimulationTime.ToString("F2");
+        }
+        
+        private void button_play_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void button_pause_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+        }
+       
+
+        private void button_reset_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            this.road = new Road(this.road.RoadRadius, this.road.Width, this.road.TimeStepSize, 0.0);
+            label_simtime.Text = this.road.CurrentSimulationTime.ToString("F2");
+            this.road.Populate((int)numeric_cars.Value);
+            pictureBox1.Refresh();
+        }
+
+        private void numeric_cars_ValueChanged(object sender, EventArgs e)
+        {
+            this.button_reset_Click(sender, e);
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            this.timer1_Tick(sender, e);
         }
         #endregion
     }
