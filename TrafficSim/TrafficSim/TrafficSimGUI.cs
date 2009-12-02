@@ -133,6 +133,11 @@ namespace TrafficSim
         {
             if (radio_simspeed10.Checked) { this.SimSpeed = 10; }
         }
+
+        private void radio_simspeed30_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radio_simspeed30.Checked) { this.SimSpeed = 30; }
+        }
         #endregion
     }
 }
