@@ -93,12 +93,13 @@ namespace TrafficSim
 
         public void Iterate(double timeStepSize)
         {
+            Random r = new Random(DateTime.Now.Millisecond);
             double v0 = this.road.DesiredVelocity;
             double delta = 4;   //Constant between 1-5, "behaviour of driver"
-            double a = 3; //Maximum acceleration
+            double a = 3.5 + 0.5 * (r.NextDouble() - 0.5); //Maximum acceleration
             double b = 0.9; //Maximum brake
             double s0 = 2; //Minimum gap
-            double T = 1.5; //Time headway
+            double T = 1.5+1*(r.NextDouble()-0.5); //Time headway
             double deltaV = this.Velocity - this.NextVehicle.Velocity; //Difference in velocity
                     
             double sa = DistanceToNextVehicle() - this.Length; //Gap = distance to vehicle in front, bumper to bumper
@@ -106,6 +107,7 @@ namespace TrafficSim
 
             this.acceleration = a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2)); //Update acceleration
             this.velocity += this.Acceleration * timeStepSize; //Update velocity
+            this.velocity = Math.Max(this.Velocity, 0);
             this.MoveToNewPos(this.Velocity * timeStepSize); //Update movement
         }
     }
