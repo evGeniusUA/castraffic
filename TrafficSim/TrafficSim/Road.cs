@@ -103,6 +103,21 @@ namespace TrafficSim
             }
         }
 
+        public double AverageVelocityKmH
+        {
+            get
+            {
+                double sum = 0.0;
+                foreach (Vehicle v in this.Vehicles)
+                {
+                    sum += v.Velocity;
+                }
+                return sum * 3.6 / this.Vehicles.Count;
+            }
+            set
+            {
+            }
+        }
 
         #endregion
 
