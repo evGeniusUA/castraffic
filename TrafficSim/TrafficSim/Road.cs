@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace TrafficSim
 {
     public class Road
     {
         #region Properties
-        
+        private CultureInfo culture = CultureInfo.CreateSpecificCulture("en-GB");
+
         private LinkedList<Vehicle> vehicles;
         public LinkedList<Vehicle> Vehicles
         {
@@ -119,6 +121,92 @@ namespace TrafficSim
             }
         }
 
+        private List<List<double>> positions;
+        public String MatlabPositions
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder((int)this.positions.Count);
+                sb.Append("% Positions as Function of time. Each row corresponds to a timestep.\n");
+                sb.Append("Positions=[");
+                foreach (List<double> timeStep in this.positions)
+                {
+                    foreach (double pos in timeStep)
+                    {
+                        sb.Append(pos.ToString("F4", culture));
+                        sb.Append(" ");
+                    }
+                    sb.Append("; ");
+                }
+                sb.Append("];");
+                return sb.ToString();
+            }
+            set
+            {
+            }
+        }
+
+        private List<List<double>> velocities;
+        public String MatlabVelocities
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder((int)this.velocities.Count);
+                sb.Append("% Velocities as Function of time. Each row corresponds to a timestep.\n");
+                sb.Append("Velocity=[");
+                foreach (List<double> timeStep in this.velocities)
+                {
+                    foreach (double vel in timeStep)
+                    {
+                        sb.Append(vel.ToString("F4", culture));
+                        sb.Append(" ");
+                    }
+                    sb.Append("; ");
+                }
+                sb.Append("];");
+                return sb.ToString();
+            }
+            set
+            {
+            }
+        }
+
+        public String MatlabTime
+        {
+            get
+            {
+                String s = "Time=linspace(0.0,";
+                s += this.CurrentSimulationTime.ToString("F4", culture);
+                s += ",";
+                s += this.TimeStepSize.ToString("F4", culture);
+                s += ");";
+                return s;
+            }
+            set
+            {
+            }
+        }
+
+        public String MatlabSettings
+        {
+            get
+            {
+                String s = "%% Export from TrafficSim.";
+                s += " Date: " + System.DateTime.Today.ToShortDateString();
+                s += " Time: " + System.DateTime.Now.ToShortTimeString() + "\n";
+
+                s += "% RoadRadius (m) = " + this.RoadRadius.ToString("F2", culture) + "\n";
+                s += "% RoadLength (m) = " + (this.RoadRadius * 2 * Math.PI).ToString("F2", culture) + "\n";
+                s += "% TimeStep (s) = " + this.TimeStepSize.ToString("F2", culture) + "\n";
+                s += "% RunTime (s) = " + this.CurrentSimulationTime.ToString("F2", culture) + "\n";
+                s += "% SpeedLimit (km/h) = " + this.DesiredVelocityKmH.ToString("F2", culture) + "\n";
+                s += "% NumberOFVehicles = " + this.NumberOfVehicles.ToString();
+                return s;
+            }
+            set
+            {
+            }
+        }
         #endregion
 
         public Road(double radius, double width, double timeStepSize, double startingTime, double maxV)
@@ -128,6 +216,8 @@ namespace TrafficSim
             this.timeStepSize = timeStepSize;
             this.currentSimulationTime = startingTime;
             this.vehicles = new LinkedList<Vehicle>();
+            this.positions = new List<List<double>>();
+            this.velocities = new List<List<double>>();
             this.desiredVelocity = maxV;
         }
 
@@ -168,11 +258,19 @@ namespace TrafficSim
         {
             // call iterate for all vehicles (calculates new positions)
             Debug.Assert(this.NumberOfVehicles > 1, "No vehicles to iterate");
+            List<double> pos = new List<double>(); //For exporting data to Matlab
+            List<double> vel = new List<double>(); //For exporting data to Matlab
+
             foreach (Vehicle v in this.Vehicles)
             {
                 v.Iterate(this.TimeStepSize);
+                pos.Add(v.Position.Rad);
+                vel.Add(v.Velocity);
                 Debug.Assert(v.Position.Rad >= 0 && v.Position.Rad <= Math.PI * 2, "Radian error:", v.Position.Rad.ToString());
             }
+
+            this.positions.Add(pos);
+            this.velocities.Add(vel);
             this.currentSimulationTime += this.TimeStepSize;
         }
     }

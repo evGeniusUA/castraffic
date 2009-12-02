@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TrafficSim
 {
@@ -137,6 +138,33 @@ namespace TrafficSim
         private void radio_simspeed30_CheckedChanged(object sender, EventArgs e)
         {
             if (radio_simspeed30.Checked) { this.SimSpeed = 30; }
+        }
+
+        private void button_save_Click(object sender, EventArgs e)
+        {
+            // Displays a SaveFileDialog so the user can save the Configuration
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Matlab m-file (*.m)|*.m|Any file (*.*)|*.*";
+            saveFileDialog1.Title = "Save Current Simulation-data to Matlab m-file";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "")
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(this.road.MatlabSettings);
+                sb.Append("\n\n");
+                sb.Append(this.road.MatlabTime);
+                sb.Append("\n\n");
+                sb.Append(this.road.MatlabPositions);
+                sb.Append("\n\n");
+                sb.Append(this.road.MatlabVelocities);
+                sb.Append("\n\n");
+
+                System.IO.StreamWriter sw = new StreamWriter(saveFileDialog1.OpenFile());
+                sw.Write(sb.ToString());
+                sw.Close();
+            }
         }
         #endregion
     }
