@@ -3,11 +3,11 @@
   <Class Name="TrafficSim.Properties.Resources" Collapsed="true">
     <Position X="0.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAADEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="TrafficSim.Properties.Settings" Collapsed="true">
-    <Position X="2.25" Y="5" Width="1.5" />
+    <Position X="2.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
@@ -15,7 +15,7 @@
   <Class Name="TrafficSim.TrafficSimGUI">
     <Position X="0.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAAACAAAAAAAACAACACAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <HashCode>AAYAAYAAACAAABIAIECACGACAAAsIAAAICAAAABGAAI=</HashCode>
       <FileName>TrafficSimGUI.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -36,21 +36,21 @@
   <Class Name="TrafficSim.Car">
     <Position X="4.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Car.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TrafficSim.Road">
     <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAaAAAACgAAAQAAAAkAIAAIAAABAAgAAAAAAAAA=</HashCode>
+      <HashCode>CAAAAAaAAAQSgAAAUAAAAlAIAAIAAABAAgAAAAAAAAA=</HashCode>
       <FileName>Road.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TrafficSim.Radian">
     <Position X="7.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgIACAAAQAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgIACAAAwAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Radian.cs</FileName>
     </TypeIdentifier>
   </Class>

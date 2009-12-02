@@ -118,7 +118,7 @@ namespace TrafficSim
             this.desiredVelocity = maxV;
         }
 
-        public Road() : this (230 / (2 * Math.PI), 3.0, 0.1, 0.0, 33.33)
+        public Road() : this (230 / (2 * Math.PI), 3.0, 0.05, 0.0, 33.33)
         {
             // Standard parameters
         }

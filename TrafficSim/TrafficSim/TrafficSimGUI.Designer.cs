@@ -33,20 +33,25 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label_simtime = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.button_play = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.button_pause = new System.Windows.Forms.ToolStripButton();
             this.button_reset = new System.Windows.Forms.ToolStripButton();
-            this.label_simtime = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.numeric_cars = new System.Windows.Forms.NumericUpDown();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radio_simspeed10 = new System.Windows.Forms.RadioButton();
+            this.radio_simspeed5 = new System.Windows.Forms.RadioButton();
+            this.radio_simspeed1 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_cars)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -77,6 +82,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Run Time";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(78, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(12, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "s";
+            // 
+            // label_simtime
+            // 
+            this.label_simtime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_simtime.AutoSize = true;
+            this.label_simtime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_simtime.Location = new System.Drawing.Point(12, 16);
+            this.label_simtime.MinimumSize = new System.Drawing.Size(60, 0);
+            this.label_simtime.Name = "label_simtime";
+            this.label_simtime.Size = new System.Drawing.Size(60, 13);
+            this.label_simtime.TabIndex = 0;
+            this.label_simtime.Text = "0.0";
+            this.label_simtime.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -101,6 +128,16 @@
             this.button_play.Text = "Run simulation";
             this.button_play.Click += new System.EventHandler(this.button_play_Click);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "Step";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // button_pause
             // 
             this.button_pause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -121,33 +158,11 @@
             this.button_reset.Text = "Reset Simulation";
             this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
             // 
-            // label_simtime
-            // 
-            this.label_simtime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_simtime.AutoSize = true;
-            this.label_simtime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_simtime.Location = new System.Drawing.Point(12, 16);
-            this.label_simtime.MinimumSize = new System.Drawing.Size(60, 0);
-            this.label_simtime.Name = "label_simtime";
-            this.label_simtime.Size = new System.Drawing.Size(60, 13);
-            this.label_simtime.TabIndex = 0;
-            this.label_simtime.Text = "0.0";
-            this.label_simtime.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(78, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(12, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "s";
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.numeric_cars);
-            this.groupBox2.Location = new System.Drawing.Point(362, 74);
+            this.groupBox2.Location = new System.Drawing.Point(362, 174);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(96, 52);
             this.groupBox2.TabIndex = 3;
@@ -177,21 +192,60 @@
             0});
             this.numeric_cars.ValueChanged += new System.EventHandler(this.numeric_cars_ValueChanged);
             // 
-            // toolStripButton1
+            // groupBox3
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "Step";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.radio_simspeed10);
+            this.groupBox3.Controls.Add(this.radio_simspeed5);
+            this.groupBox3.Controls.Add(this.radio_simspeed1);
+            this.groupBox3.Location = new System.Drawing.Point(362, 75);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(96, 93);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Sim Speed";
+            // 
+            // radio_simspeed10
+            // 
+            this.radio_simspeed10.AutoSize = true;
+            this.radio_simspeed10.Location = new System.Drawing.Point(15, 65);
+            this.radio_simspeed10.Name = "radio_simspeed10";
+            this.radio_simspeed10.Size = new System.Drawing.Size(45, 17);
+            this.radio_simspeed10.TabIndex = 2;
+            this.radio_simspeed10.Text = "x 10";
+            this.radio_simspeed10.UseVisualStyleBackColor = true;
+            this.radio_simspeed10.CheckedChanged += new System.EventHandler(this.radio_simspeed10_CheckedChanged);
+            // 
+            // radio_simspeed5
+            // 
+            this.radio_simspeed5.AutoSize = true;
+            this.radio_simspeed5.Location = new System.Drawing.Point(15, 42);
+            this.radio_simspeed5.Name = "radio_simspeed5";
+            this.radio_simspeed5.Size = new System.Drawing.Size(39, 17);
+            this.radio_simspeed5.TabIndex = 1;
+            this.radio_simspeed5.Text = "x 5";
+            this.radio_simspeed5.UseVisualStyleBackColor = true;
+            this.radio_simspeed5.CheckedChanged += new System.EventHandler(this.radio_simspeed5_CheckedChanged);
+            // 
+            // radio_simspeed1
+            // 
+            this.radio_simspeed1.AutoSize = true;
+            this.radio_simspeed1.Checked = true;
+            this.radio_simspeed1.Location = new System.Drawing.Point(15, 19);
+            this.radio_simspeed1.Name = "radio_simspeed1";
+            this.radio_simspeed1.Size = new System.Drawing.Size(39, 17);
+            this.radio_simspeed1.TabIndex = 0;
+            this.radio_simspeed1.TabStop = true;
+            this.radio_simspeed1.Text = "x 1";
+            this.radio_simspeed1.UseVisualStyleBackColor = true;
+            this.radio_simspeed1.CheckedChanged += new System.EventHandler(this.radio_simspeed1_CheckedChanged);
             // 
             // TrafficSimGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(470, 400);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox1);
@@ -206,6 +260,8 @@
             this.toolStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numeric_cars)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,6 +281,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.NumericUpDown numeric_cars;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton radio_simspeed1;
+        private System.Windows.Forms.RadioButton radio_simspeed10;
+        private System.Windows.Forms.RadioButton radio_simspeed5;
 
     }
 }

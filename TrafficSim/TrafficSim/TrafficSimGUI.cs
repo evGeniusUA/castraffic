@@ -13,6 +13,18 @@ namespace TrafficSim
     public partial class TrafficSimGUI : Form
     {
         private Road road;
+        private int simspeed = 1;
+        public int SimSpeed
+        {
+            get
+            {
+                return this.simspeed;
+            }
+            set
+            {
+                this.simspeed = value;
+            }
+        }
 
         public TrafficSimGUI(Road road)
         {
@@ -55,14 +67,20 @@ namespace TrafficSim
         }
         #endregion
 
-        #region buttons
+        #region timer
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.road.Iterate();
+            for (int i = 0; i < this.SimSpeed; i++)
+            {
+                this.road.Iterate();
+            }
+
             pictureBox1.Refresh();
             label_simtime.Text = this.road.CurrentSimulationTime.ToString("F2");
         }
-        
+        #endregion
+
+        #region buttons
         private void button_play_Click(object sender, EventArgs e)
         {
             timer1.Start();
@@ -91,6 +109,21 @@ namespace TrafficSim
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             this.timer1_Tick(sender, e);
+        }
+
+        private void radio_simspeed1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radio_simspeed1.Checked) { this.SimSpeed = 1; }
+        }
+
+        private void radio_simspeed5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radio_simspeed5.Checked) { this.SimSpeed = 5; }
+        }
+
+        private void radio_simspeed10_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radio_simspeed10.Checked) { this.SimSpeed = 10; }
         }
         #endregion
     }
