@@ -36,7 +36,7 @@ namespace TrafficSim
 
         public static Radian FromDistance(double distance, double radius)
         {
-            return new Radian(distance/radius);
+            return new Radian((distance / radius) % 2 * Math.PI);
         }
     }
 }
