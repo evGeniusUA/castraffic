@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace TrafficSim
 {
@@ -14,6 +15,17 @@ namespace TrafficSim
             get
             {
                 return this.vehicles;
+            }
+            set
+            {
+            }
+        }
+        
+        public int NumberOfVehicles
+        {
+            get
+            {
+                return this.vehicles.Count;
             }
             set
             {
@@ -94,7 +106,7 @@ namespace TrafficSim
 
         public void Populate(int numberOfVehicles)
         {
-            // Toy function which just adds cars at evenly distributed around the road
+            Debug.Assert(numberOfVehicles > 1, "Number of Vehicles must be > 1");
 
             for (int i = 0; i < numberOfVehicles; i++)
             {
@@ -111,9 +123,9 @@ namespace TrafficSim
             foreach (Vehicle v in this.Vehicles)
             {
                 v.Iterate(this.TimeStepSize);
+                Debug.Assert(v.Position.Rad >= 0 && v.Position.Rad <= Math.PI * 2, "Radian error:", v.Position.Rad.ToString());
             }
-            this.CurrentSimulationTime += this.TimeStepSize;
+            this.currentSimulationTime += this.TimeStepSize;
         }
-
     }
 }
