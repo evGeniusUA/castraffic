@@ -7,9 +7,25 @@ namespace TrafficSim
     public class Vehicle
     {
         #region Properties
-        public Radian Position { get; set; } //For circular road in radians
+
+        //For circular road in radians
+        protected Radian newPosition;
+        protected Radian position;
+        public Radian Position
+        {
+            get
+            {
+                return this.position;
+            }
+            set
+            {
+                this.position = value;
+            }
+        }
+
         private Queue<double> accelerationHistory; //FIFO-buffer with acceleration
 
+        protected double newVelocity;
         protected double velocity;
         public double Velocity
         {
@@ -119,9 +135,16 @@ namespace TrafficSim
             this.maxBrake = maxBrake;
             this.driver = drv;
             this.velocity = 5;
+            this.newVelocity = this.velocity;
             this.accelerationHistory = new Queue<double>();
-            for(int i = 0; i <1/this.Road.TimeStepSize; i++)
+            for(int i = 0; i <0.6/this.Road.TimeStepSize; i++)
                 accelerationHistory.Enqueue(0);
+        }
+
+        public void UpdatePosAndVel()
+        {
+            this.position = this.newPosition;
+            this.velocity = this.newVelocity;
         }
 
         public double DistanceToNextVehicle()
@@ -132,7 +155,7 @@ namespace TrafficSim
 
         private void MoveToNewPos(double distanceToMove)
         {
-            this.Position = this.Position + Radian.FromDistance(distanceToMove, this.Road.RoadRadius);
+            this.newPosition = this.position + Radian.FromDistance(distanceToMove, this.Road.RoadRadius);
         }
 
         public void Iterate(double timeStepSize)
@@ -141,7 +164,7 @@ namespace TrafficSim
             double delta = 4;   //Constant between 1-5, "behaviour of driver"
             double a = this.MaxAcceleration; //Maximum acceleration
             double b = this.MaxBrake; //Maximum brake
-            double s0 = 2; //Minimum gap
+            double s0 = 1.5; //Minimum gap
             double T = 0.5 + this.Driver; //Time headway
             double deltaV = this.Velocity - this.NextVehicle.Velocity; // +(this.Velocity - this.NextVehicle.Velocity) * 2 * (this.Driver - 0.5); //Difference in velocity
                     
@@ -151,9 +174,9 @@ namespace TrafficSim
             accelerationHistory.Enqueue(a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2))); //Update acceleration
 
             this.acceleration = accelerationHistory.Dequeue();
-            this.velocity += this.Acceleration * timeStepSize; //Update velocity
-            this.velocity = Math.Max(this.Velocity, 0);
-            this.MoveToNewPos(this.Velocity * timeStepSize+ (1/2) * this.Acceleration * Math.Pow(timeStepSize,2)); //Update movement
+            this.newVelocity += this.Acceleration * timeStepSize; //Update velocity
+            this.newVelocity = Math.Max(this.newVelocity, 0);
+            this.MoveToNewPos(this.newVelocity * timeStepSize+ (1/2) * this.Acceleration * Math.Pow(timeStepSize,2)); //Update movement
         }
     }
 }
