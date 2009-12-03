@@ -8,7 +8,7 @@ namespace TrafficSim
     {
         #region Properties
         public Radian Position { get; set; } //For circular road in radians
-        Queue<double> historyAcceleration; //FIFO-buffer with reactiontime
+        private Queue<double> accelerationHistory; //FIFO-buffer with acceleration
 
         protected double velocity;
         public double Velocity
@@ -118,10 +118,10 @@ namespace TrafficSim
             this.maxAcceleration = maxAcc;
             this.maxBrake = maxBrake;
             this.driver = drv;
-            this.velocity = this.Road.DesiredVelocity;
-            this.historyAcceleration = new Queue<double>();
+            this.velocity = 5;
+            this.accelerationHistory = new Queue<double>();
             for(int i = 0; i <1/this.Road.TimeStepSize; i++)
-                historyAcceleration.Enqueue(0);
+                accelerationHistory.Enqueue(0);
         }
 
         public double DistanceToNextVehicle()
@@ -138,19 +138,19 @@ namespace TrafficSim
         public void Iterate(double timeStepSize)
         {
             double v0 = this.road.DesiredVelocity;
-            double delta = 2;   //Constant between 1-5, "behaviour of driver"
+            double delta = 4;   //Constant between 1-5, "behaviour of driver"
             double a = this.MaxAcceleration; //Maximum acceleration
             double b = this.MaxBrake; //Maximum brake
-            double s0 = 1; //Minimum gap
+            double s0 = 2; //Minimum gap
             double T = 0.5 + this.Driver; //Time headway
-            double deltaV = this.Velocity - this.NextVehicle.Velocity + (this.Velocity - this.NextVehicle.Velocity) * 2 * (this.Driver - 0.5); //Difference in velocity
+            double deltaV = this.Velocity - this.NextVehicle.Velocity; // +(this.Velocity - this.NextVehicle.Velocity) * 2 * (this.Driver - 0.5); //Difference in velocity
                     
             double sa = DistanceToNextVehicle() - this.Length; //Gap = distance to vehicle in front, bumper to bumper
             double sStar = s0+Math.Max(this.Velocity*T+this.Velocity*deltaV/(2*Math.Sqrt(a*b)),0); //Effective desired distance
 
-            historyAcceleration.Enqueue(a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2))); //Update acceleration
+            accelerationHistory.Enqueue(a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2))); //Update acceleration
 
-            this.acceleration = historyAcceleration.Dequeue();
+            this.acceleration = accelerationHistory.Dequeue();
             this.velocity += this.Acceleration * timeStepSize; //Update velocity
             this.velocity = Math.Max(this.Velocity, 0);
             this.MoveToNewPos(this.Velocity * timeStepSize+ (1/2) * this.Acceleration * Math.Pow(timeStepSize,2)); //Update movement

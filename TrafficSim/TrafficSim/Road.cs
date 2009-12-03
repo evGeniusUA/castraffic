@@ -127,13 +127,13 @@ namespace TrafficSim
             get
             {
                 StringBuilder sb = new StringBuilder((int)this.positions.Count);
-                sb.Append("% Positions as Function of time. Each row corresponds to a timestep.\n");
+                sb.Append("% Positions (m) as Function of time. Each row corresponds to a timestep.\n");
                 sb.Append("Positions=[");
                 foreach (List<double> timeStep in this.positions)
                 {
                     foreach (double pos in timeStep)
                     {
-                        sb.Append(pos.ToString("F4", culture));
+                        sb.Append((pos*this.RoadRadius).ToString("F4", culture));
                         sb.Append(" ");
                     }
                     sb.Append("; ");
@@ -152,13 +152,13 @@ namespace TrafficSim
             get
             {
                 StringBuilder sb = new StringBuilder((int)this.velocities.Count);
-                sb.Append("% Velocities as Function of time. Each row corresponds to a timestep.\n");
+                sb.Append("% Velocities (m/s) as Function of time. Each row corresponds to a timestep.\n");
                 sb.Append("Velocity=[");
                 foreach (List<double> timeStep in this.velocities)
                 {
                     foreach (double vel in timeStep)
                     {
-                        sb.Append(vel.ToString("F4", culture));
+                        sb.Append((vel*3.6).ToString("F4", culture));
                         sb.Append(" ");
                     }
                     sb.Append("; ");
@@ -175,11 +175,13 @@ namespace TrafficSim
         {
             get
             {
-                String s = "Time=linspace(0.0,";
-                s += this.CurrentSimulationTime.ToString("F4", culture);
-                s += ",";
+                String s = "Time= ";
                 s += this.TimeStepSize.ToString("F4", culture);
-                s += ");";
+                s += ":";
+                s += this.TimeStepSize.ToString("F4", culture);
+                s += ":";
+                s += this.CurrentSimulationTime.ToString("F4", culture);
+                s += ";";
                 return s;
             }
             set
