@@ -11,7 +11,7 @@ namespace TrafficSim
 
         public Radian(double r)
         {
-            this.Rad = r;
+            this.Rad = r % (2 * Math.PI);
         }
 
         public static Radian operator +(Radian a, Radian b)

@@ -249,8 +249,8 @@ namespace TrafficSim
 
             for (int i = 0; i < numberOfVehicles; i++)
             {
-                Car newVehicle = new Car(this, 0.7, 1.63, 1);
-                newVehicle.Position = new Radian(i * 2 * Math.PI / numberOfVehicles);
+                Car newVehicle = new Car(this, 0.73, 1.63, 1);
+                newVehicle.Position = new Radian((i * 2 * Math.PI / numberOfVehicles)) + Radian.FromDistance((r.NextDouble()) * 1, this.RoadRadius) ;
                 this.AddVehicle(newVehicle);
             }
 
@@ -266,11 +266,15 @@ namespace TrafficSim
             foreach (Vehicle v in this.Vehicles)
             {
                 v.Iterate(this.TimeStepSize);
+            }
+
+            foreach (Vehicle v in this.Vehicles)
+            {
+                v.UpdatePosAndVel();
                 pos.Add(v.Position.Rad);
                 vel.Add(v.Velocity);
                 Debug.Assert(v.Position.Rad >= 0 && v.Position.Rad <= Math.PI * 2, "Radian error:", v.Position.Rad.ToString());
             }
-
             this.positions.Add(pos);
             this.velocities.Add(vel);
             this.currentSimulationTime += this.TimeStepSize;
