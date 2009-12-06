@@ -171,6 +171,32 @@ namespace TrafficSim
             }
         }
 
+
+        private List<List<double>> accelerations;
+        public String MatlabAccelerations
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder((int)this.accelerations.Count);
+                sb.Append("% Accelerations (m/s) as Function of time. Each row corresponds to a timestep.\n");
+                sb.Append("Acceleration=[");
+                foreach (List<double> timeStep in this.accelerations)
+                {
+                    foreach (double acc in timeStep)
+                    {
+                        sb.Append((acc * 3.6).ToString("F4", culture));
+                        sb.Append(" ");
+                    }
+                    sb.Append("; ");
+                }
+                sb.Append("];");
+                return sb.ToString();
+            }
+            set
+            {
+            }
+        }
+
         public String MatlabTime
         {
             get
@@ -220,6 +246,7 @@ namespace TrafficSim
             this.vehicles = new LinkedList<Vehicle>();
             this.positions = new List<List<double>>();
             this.velocities = new List<List<double>>();
+            this.accelerations = new List<List<double>>();
             this.desiredVelocity = maxV;
         }
 
@@ -250,7 +277,7 @@ namespace TrafficSim
             for (int i = 0; i < numberOfVehicles; i++)
             {
                 Car newVehicle = new Car(this, 0.73, 1.63, 1);
-                newVehicle.Position = new Radian((i * 2 * Math.PI / numberOfVehicles)) + Radian.FromDistance((r.NextDouble()) * 1, this.RoadRadius) ;
+                newVehicle.Position = new Radian((i * 2 * Math.PI / numberOfVehicles)) + Radian.FromDistance((r.NextDouble()) * 1, this.RoadRadius);
                 this.AddVehicle(newVehicle);
             }
 
@@ -262,6 +289,7 @@ namespace TrafficSim
             Debug.Assert(this.NumberOfVehicles > 1, "No vehicles to iterate");
             List<double> pos = new List<double>(); //For exporting data to Matlab
             List<double> vel = new List<double>(); //For exporting data to Matlab
+            List<double> acc = new List<double>(); //For exporting data to Matlab
 
             foreach (Vehicle v in this.Vehicles)
             {
@@ -273,10 +301,12 @@ namespace TrafficSim
                 v.UpdatePosAndVel();
                 pos.Add(v.Position.Rad);
                 vel.Add(v.Velocity);
+                acc.Add(v.Acceleration);
                 Debug.Assert(v.Position.Rad >= 0 && v.Position.Rad <= Math.PI * 2, "Radian error:", v.Position.Rad.ToString());
             }
             this.positions.Add(pos);
             this.velocities.Add(vel);
+            this.accelerations.Add(acc);
             this.currentSimulationTime += this.TimeStepSize;
         }
     }

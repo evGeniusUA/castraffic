@@ -6,13 +6,17 @@ figure(2);
 hold off;
 plot(Time,Velocity(:,:),'.','MarkerSize',1);
 hold on;
+figure(3);
+hold off;
+plot(Time,Acceleration(:,:),'.','MarkerSize',1);
+hold on;
 %for i = 1:50
 %    figure(i+4);
 %    plot(Time,Velocity(:,i),'-','MarkerSize',1);
 %end
 
     
-figure(3);
+figure(4);
 hold off;
 g = Positions';
 [B,IX] = sort(g);
