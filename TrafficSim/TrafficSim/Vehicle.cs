@@ -167,9 +167,18 @@ namespace TrafficSim
             double s0 = 1.5; //Minimum gap
             double T = 0.5 + this.Driver; //Time headway
             double deltaV = this.Velocity - this.NextVehicle.Velocity; // +(this.Velocity - this.NextVehicle.Velocity) * 2 * (this.Driver - 0.5); //Difference in velocity
-                    
+
+            double brakeAcceleration = 1;
+
+            //if (this.NextVehicle.NextVehicle.Acceleration < 0)
+            //{
+            //    brakeAcceleration = 2;
+            //}
+
             double sa = DistanceToNextVehicle() - this.Length; //Gap = distance to vehicle in front, bumper to bumper
-            double sStar = s0+Math.Max(this.Velocity*T+this.Velocity*deltaV/(2*Math.Sqrt(a*b)),0); //Effective desired distance
+            double sStar = s0+Math.Max(this.Velocity*T+brakeAcceleration*this.Velocity*deltaV/(2*Math.Sqrt(a*b)),0); //Effective desired distance
+
+
 
             accelerationHistory.Enqueue(a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2))); //Update acceleration
 

@@ -64,7 +64,14 @@ namespace TrafficSim
                 transMatrix.RotateAt((float)v.Position.ToDegrees(), new PointF((wE + wR) / 2, (wE + wR) / 2));
                 transMatrix.TransformPoints(carModel);
 
-                g.FillPolygon(new SolidBrush(Color.Red), carModel);
+                if (v.Acceleration >= 0)
+                {
+                    g.FillPolygon(new SolidBrush(Color.LightGreen), carModel);
+                }
+                else
+                {
+                    g.FillPolygon(new SolidBrush(Color.Red), carModel);
+                }
             }
 
         }
@@ -159,6 +166,8 @@ namespace TrafficSim
                 sb.Append(this.road.MatlabPositions);
                 sb.Append("\n\n");
                 sb.Append(this.road.MatlabVelocities);
+                sb.Append("\n\n");
+                sb.Append(this.road.MatlabAccelerations);
                 sb.Append("\n\n");
 
                 System.IO.StreamWriter sw = new StreamWriter(saveFileDialog1.OpenFile());
