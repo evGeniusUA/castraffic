@@ -14,7 +14,7 @@ namespace TrafficSim
         static void Main()
         {
             Road road = new Road();
-            road.Populate(20);
+            road.Populate(30);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
