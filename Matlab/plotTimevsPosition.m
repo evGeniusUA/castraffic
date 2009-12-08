@@ -15,7 +15,9 @@ hold on;
 %    plot(Time,Velocity(:,i),'-','MarkerSize',1);
 %end
 
-    
+% Flow = cars/h, measure cars at a given point, for example pos = 0
+% Density = vehicles/km, measure +-20m?
+
 figure(4);
 hold off;
 g = Positions';
