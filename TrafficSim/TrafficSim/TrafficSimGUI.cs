@@ -64,13 +64,17 @@ namespace TrafficSim
                 transMatrix.RotateAt((float)v.Position.ToDegrees(), new PointF((wE + wR) / 2, (wE + wR) / 2));
                 transMatrix.TransformPoints(carModel);
 
-                if (v.Acceleration >= 0)
+                if (v.Acceleration >= 0.1)
                 {
                     g.FillPolygon(new SolidBrush(Color.LightGreen), carModel);
                 }
-                else
+                else if (v.Acceleration <= -0.1)
                 {
                     g.FillPolygon(new SolidBrush(Color.Red), carModel);
+                }
+                else
+                {
+                    g.FillPolygon(new SolidBrush(Color.LightGray), carModel);
                 }
             }
 

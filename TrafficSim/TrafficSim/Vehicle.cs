@@ -137,7 +137,7 @@ namespace TrafficSim
             this.velocity = 5;
             this.newVelocity = this.velocity;
             this.accelerationHistory = new Queue<double>();
-            for(int i = 0; i <0.6/this.Road.TimeStepSize; i++)
+            for(int i = 0; i <1.0/this.Road.TimeStepSize; i++)
                 accelerationHistory.Enqueue(0);
         }
 
@@ -168,19 +168,19 @@ namespace TrafficSim
             double T = 0.5 + this.Driver; //Time headway
             double deltaV = this.Velocity - this.NextVehicle.Velocity; // +(this.Velocity - this.NextVehicle.Velocity) * 2 * (this.Driver - 0.5); //Difference in velocity
 
-            double brakeAcceleration = 1;
+            double brakeAcceleration = 0;
 
-            //if (this.NextVehicle.NextVehicle.Acceleration < 0)
+            //if (this.NextVehicle.NextVehicle.Acceleration <= -0.2)
             //{
-            //    brakeAcceleration = 2;
+            //    brakeAcceleration = 0.8;
             //}
 
             double sa = DistanceToNextVehicle() - this.Length; //Gap = distance to vehicle in front, bumper to bumper
-            double sStar = s0+Math.Max(this.Velocity*T+brakeAcceleration*this.Velocity*deltaV/(2*Math.Sqrt(a*b)),0); //Effective desired distance
+            double sStar = s0+Math.Max(this.Velocity*T+this.Velocity*deltaV/(2*Math.Sqrt(a*b)),0); //Effective desired distance
 
 
 
-            accelerationHistory.Enqueue(a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2))); //Update acceleration
+            accelerationHistory.Enqueue(a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2)-brakeAcceleration)); //Update acceleration
 
             this.acceleration = accelerationHistory.Dequeue();
             this.newVelocity += this.Acceleration * timeStepSize; //Update velocity
