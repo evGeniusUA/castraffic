@@ -27,9 +27,11 @@ namespace TrafficSim
             }
         }
 
-        public TrafficSimGUI(Road road)
+        public TrafficSimGUI()
         {
-            this.road = road;
+            this.road = new Road();
+            road.Populate(60);
+
             InitializeComponent();
             timer1.Interval = (int)(road.TimeStepSize * 1000);
             pictureBox1.Paint += new PaintEventHandler(pictureBox1_Paint);
