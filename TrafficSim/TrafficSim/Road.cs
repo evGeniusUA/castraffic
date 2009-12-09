@@ -143,6 +143,8 @@ namespace TrafficSim
             }
         }
 
+        private double startPositionMaxDeviation;
+
         private List<List<double>> positions;
         public String MatlabPositions
         {
@@ -243,14 +245,20 @@ namespace TrafficSim
             {
                 String s = "%% Export from TrafficSim.";
                 s += " Date: " + System.DateTime.Today.ToShortDateString();
-                s += " Time: " + System.DateTime.Now.ToShortTimeString() + "\n";
+                s += " Time: " + System.DateTime.Now.ToShortTimeString() + "\nn";
 
                 s += "% RoadRadius (m) = " + this.RoadRadius.ToString("F2", culture) + "\n";
                 s += "% RoadLength (m) = " + (this.RoadRadius * 2 * Math.PI).ToString("F2", culture) + "\n";
                 s += "% TimeStep (s) = " + this.TimeStepSize.ToString("F2", culture) + "\n";
                 s += "% RunTime (s) = " + this.CurrentSimulationTime.ToString("F2", culture) + "\n";
-                s += "% SpeedLimit (km/h) = " + this.DesiredVelocityKmH.ToString("F2", culture) + "\n";
-                s += "% NumberOFVehicles = " + this.NumberOfVehicles.ToString();
+                s += "% SpeedLimit (km/h) = " + this.DesiredVelocityKmH.ToString("F2", culture) + "\n\n";
+                
+                s += "% NumberOFVehicles = " + this.NumberOfVehicles.ToString() + "\n";
+                s += "% Maximum deviation of start position (m) = " + this.startPositionMaxDeviation.ToString("F2", culture) + "\n";
+                s += "% TimeHeadway (s) = " + Car.CAR_TIME_HEADWAY.ToString("F2", culture) + "\n";
+                s += "% MaxAcceleration (m/(s^2)) = " + Car.CAR_MAX_ACCELERATION.ToString("F2", culture) + "\n";
+                s += "% MaxBrake (m/(s^2)) = " + Car.CAR_MAX_BRAKE.ToString("F2", culture) + "\n";
+                s += "% DriverReactionTime (s) = " + Car.CAR_DRIVER_REACTION_TIME.ToString("F2", culture) + "\nn";
                 return s;
             }
             set
@@ -270,6 +278,7 @@ namespace TrafficSim
             this.velocities = new List<List<double>>();
             this.accelerations = new List<List<double>>();
             this.desiredVelocity = maxV;
+            this.startPositionMaxDeviation = 1.0;
         }
 
         public Road() : this (800 / (2 * Math.PI), 3.5, 0.05, 0.0, 50/3.6)
@@ -298,8 +307,11 @@ namespace TrafficSim
 
             for (int i = 0; i < numberOfVehicles; i++)
             {
-                Car newVehicle = new Car(this, 0.73, 1.63, 1);
-                newVehicle.Position = new Radian((i * 2 * Math.PI / numberOfVehicles)) + Radian.FromDistance((r.NextDouble()) * 1, this.RoadRadius);
+                Car newVehicle = new Car(this);
+                newVehicle.Position = new Radian((i * 2 * Math.PI / numberOfVehicles)) 
+                                       + Radian.FromDistance(
+                                            (r.NextDouble()) * this.startPositionMaxDeviation
+                                            , this.RoadRadius);
                 this.AddVehicle(newVehicle);
             }
 
@@ -324,7 +336,7 @@ namespace TrafficSim
                 pos.Add(v.Position.Rad);
                 vel.Add(v.Velocity);
                 acc.Add(v.Acceleration);
-                Debug.Assert(v.Position.Rad >= 0 && v.Position.Rad <= Math.PI * 2, "Radian error:", v.Position.Rad.ToString());
+                //Debug.Assert(v.Position.Rad >= 0 && v.Position.Rad <= Math.PI * 2, "Radian error:", v.Position.Rad.ToString());
             }
             this.positions.Add(pos);
             this.velocities.Add(vel);

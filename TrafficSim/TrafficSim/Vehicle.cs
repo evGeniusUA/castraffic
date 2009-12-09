@@ -88,7 +88,7 @@ namespace TrafficSim
             }
         }
        
-        protected double maxAcceleration = 0.6;
+        protected double maxAcceleration;
         public double MaxAcceleration
         {
             get
@@ -100,7 +100,7 @@ namespace TrafficSim
             }
         }
         
-        protected double maxBrake = 0.9;
+        protected double maxBrake;
         public double MaxBrake
         {
             get
@@ -112,12 +112,12 @@ namespace TrafficSim
             }
         }
 
-        protected double driver = 0.0;
-        public double Driver
+        protected double timeHeadway;
+        public double TimeHeadway
         {
             get
             {
-                return this.driver;
+                return this.timeHeadway;
             }
             set
             {
@@ -128,16 +128,18 @@ namespace TrafficSim
         // Constructor - add needed arguments
         // After constructing Vehicle object, don't forget to add NextVehicle...
         // You also need to modify Car constructor and other classes extending this
-        public Vehicle(Road road, double maxAcc, double maxBrake, double drv)
+        public Vehicle(Road road, double maxAcc, double maxBrake, double timeHeadway, double reactionTime)
         {
             this.road = road;
             this.maxAcceleration = maxAcc;
             this.maxBrake = maxBrake;
-            this.driver = drv;
+            this.timeHeadway = timeHeadway;
             this.velocity = 5;
             this.newVelocity = this.velocity;
             this.accelerationHistory = new Queue<double>();
-            for(int i = 0; i <1.0/this.Road.TimeStepSize; i++)
+
+            // Size of driver command-que determined by reaction time of driver
+            for(int i = 0; i < reactionTime/this.Road.TimeStepSize; i++)
                 accelerationHistory.Enqueue(0);
         }
 
@@ -165,7 +167,7 @@ namespace TrafficSim
             double a = this.MaxAcceleration; //Maximum acceleration
             double b = this.MaxBrake; //Maximum brake
             double s0 = 1.5; //Minimum gap
-            double T = 0.5 + this.Driver; //Time headway
+            double T = this.TimeHeadway; //Time headway
             double deltaV = this.Velocity - this.NextVehicle.Velocity; // +(this.Velocity - this.NextVehicle.Velocity) * 2 * (this.Driver - 0.5); //Difference in velocity
 
             double brakeAcceleration = 0;
@@ -177,8 +179,6 @@ namespace TrafficSim
 
             double sa = DistanceToNextVehicle() - this.Length; //Gap = distance to vehicle in front, bumper to bumper
             double sStar = s0+Math.Max(this.Velocity*T+this.Velocity*deltaV/(2*Math.Sqrt(a*b)),0); //Effective desired distance
-
-
 
             accelerationHistory.Enqueue(a * (1 - Math.Pow(this.Velocity / v0, delta) - Math.Pow(sStar / sa, 2)-brakeAcceleration)); //Update acceleration
 
