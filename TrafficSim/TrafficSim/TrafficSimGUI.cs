@@ -154,7 +154,7 @@ namespace TrafficSim
 
         private void radio_simspeed30_CheckedChanged(object sender, EventArgs e)
         {
-            if (radio_simspeed30.Checked) { this.SimSpeed = 30; }
+            if (radio_simspeed30.Checked) { this.SimSpeed = 100; }
         }
 
         private void button_save_Click(object sender, EventArgs e)

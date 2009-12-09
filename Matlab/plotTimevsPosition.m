@@ -1,7 +1,10 @@
 close all;
 figure(1);
 hold off;
-plot(Positions(:,:),Time,'.','MarkerSize',1);
+plot(Positions(:,:),Time,'black.','MarkerSize',1);
+xlabel('Position [m]');
+ylabel('Time [m]');
+axis([0 800 0 2000]);
 figure(2);
 hold off;
 plot(Time,Velocity(:,:),'.','MarkerSize',1);
