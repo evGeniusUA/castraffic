@@ -123,6 +123,19 @@ namespace TrafficSim
             {
             }
         }
+
+        // When = 0, this feature is turned off
+        protected double adaptionToNextNextVehicle = 0.0;
+        public double AdaptionToNextNextVehicle
+        {
+            get
+            {
+                return this.AdaptionToNextNextVehicle;
+            }
+            set
+            {
+            }
+        }
         #endregion
 
         // Constructor - add needed arguments
