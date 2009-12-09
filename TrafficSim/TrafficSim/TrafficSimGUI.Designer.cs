@@ -416,7 +416,7 @@
             this.groupBox7.Size = new System.Drawing.Size(96, 40);
             this.groupBox7.TabIndex = 4;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Avg. Desity";
+            this.groupBox7.Text = "Avg. Density";
             // 
             // label5
             // 
