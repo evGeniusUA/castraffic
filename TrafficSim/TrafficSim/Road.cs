@@ -9,6 +9,7 @@ namespace TrafficSim
     public class Road
     {
         #region Properties
+        private int counter;
         private CultureInfo culture = CultureInfo.CreateSpecificCulture("en-GB");
 
         private LinkedList<Vehicle> vehicles;
@@ -280,9 +281,10 @@ namespace TrafficSim
             this.accelerations = new List<List<double>>();
             this.desiredVelocity = maxV;
             this.startPositionMaxDeviation = 1.0;
+            this.counter = 0;
         }
 
-        public Road() : this (800 / (2 * Math.PI), 3.5, 0.05, 0.0, 50/3.6)
+        public Road() : this (200 / (2 * Math.PI), 3.5, 0.05, 0.0, 50/3.6)
         {
             // Standard parameters
         }
@@ -325,23 +327,34 @@ namespace TrafficSim
             List<double> pos = new List<double>(); //For exporting data to Matlab
             List<double> vel = new List<double>(); //For exporting data to Matlab
             List<double> acc = new List<double>(); //For exporting data to Matlab
-
+            
             foreach (Vehicle v in this.Vehicles)
             {
                 v.Iterate(this.TimeStepSize);
             }
-
+            int vehicleCounter = 0;
             foreach (Vehicle v in this.Vehicles)
             {
                 v.UpdatePosAndVel();
-                pos.Add(v.Position.Rad);
-                vel.Add(v.Velocity);
-                acc.Add(v.Acceleration);
+                if(counter % 3 == 0)
+                {
+                    if (vehicleCounter % 3 == 0)
+                    {
+                        pos.Add(v.Position.Rad);
+                        vel.Add(v.Velocity);
+                        acc.Add(v.Acceleration);
+                    }
+                    vehicleCounter++;
+            }
                 //Debug.Assert(v.Position.Rad >= 0 && v.Position.Rad <= Math.PI * 2, "Radian error:", v.Position.Rad.ToString());
             }
-            this.positions.Add(pos);
-            this.velocities.Add(vel);
-            this.accelerations.Add(acc);
+            if (counter % 3 == 0)
+            {
+                this.positions.Add(pos);
+                //this.velocities.Add(vel);
+                //this.accelerations.Add(acc);
+            }
+            counter++;
             this.currentSimulationTime += this.TimeStepSize;
         }
     }
