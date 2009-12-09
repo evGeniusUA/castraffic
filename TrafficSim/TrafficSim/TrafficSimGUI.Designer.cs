@@ -81,7 +81,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Location = new System.Drawing.Point(12, 28);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(381, 413);
+            this.pictureBox1.Size = new System.Drawing.Size(419, 413);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -95,7 +95,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label_simtime);
-            this.groupBox1.Location = new System.Drawing.Point(399, 28);
+            this.groupBox1.Location = new System.Drawing.Point(437, 28);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(96, 40);
             this.groupBox1.TabIndex = 1;
@@ -136,7 +136,7 @@
             this.button_save});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(507, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(545, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -199,7 +199,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.numeric_cars);
-            this.groupBox2.Location = new System.Drawing.Point(399, 194);
+            this.groupBox2.Location = new System.Drawing.Point(437, 194);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(96, 52);
             this.groupBox2.TabIndex = 3;
@@ -236,7 +236,7 @@
             this.groupBox3.Controls.Add(this.radio_simspeed10);
             this.groupBox3.Controls.Add(this.radio_simspeed5);
             this.groupBox3.Controls.Add(this.radio_simspeed1);
-            this.groupBox3.Location = new System.Drawing.Point(399, 75);
+            this.groupBox3.Location = new System.Drawing.Point(437, 75);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(96, 113);
             this.groupBox3.TabIndex = 4;
@@ -294,7 +294,7 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.numeric_speedLimit);
-            this.groupBox4.Location = new System.Drawing.Point(399, 252);
+            this.groupBox4.Location = new System.Drawing.Point(437, 252);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(96, 52);
             this.groupBox4.TabIndex = 4;
@@ -343,7 +343,7 @@
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.label_avgv);
-            this.groupBox5.Location = new System.Drawing.Point(399, 310);
+            this.groupBox5.Location = new System.Drawing.Point(437, 310);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(96, 40);
             this.groupBox5.TabIndex = 2;
@@ -377,7 +377,7 @@
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.label_flow);
-            this.groupBox6.Location = new System.Drawing.Point(399, 356);
+            this.groupBox6.Location = new System.Drawing.Point(437, 356);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(96, 40);
             this.groupBox6.TabIndex = 3;
@@ -411,7 +411,7 @@
             this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.label5);
             this.groupBox7.Controls.Add(this.label_density);
-            this.groupBox7.Location = new System.Drawing.Point(399, 401);
+            this.groupBox7.Location = new System.Drawing.Point(437, 401);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(96, 40);
             this.groupBox7.TabIndex = 4;
@@ -444,7 +444,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 453);
+            this.ClientSize = new System.Drawing.Size(545, 453);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
