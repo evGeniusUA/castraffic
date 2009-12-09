@@ -13,12 +13,9 @@ namespace TrafficSim
         [STAThread]
         static void Main()
         {
-            Road road = new Road();
-            road.Populate(60);
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TrafficSimGUI(road));
+            Application.Run(new TrafficSimGUI());
         }
     }
 }
