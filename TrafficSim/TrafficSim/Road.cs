@@ -258,7 +258,8 @@ namespace TrafficSim
                 s += "% TimeHeadway (s) = " + Car.CAR_TIME_HEADWAY.ToString("F2", culture) + "\n";
                 s += "% MaxAcceleration (m/(s^2)) = " + Car.CAR_MAX_ACCELERATION.ToString("F2", culture) + "\n";
                 s += "% MaxBrake (m/(s^2)) = " + Car.CAR_MAX_BRAKE.ToString("F2", culture) + "\n";
-                s += "% DriverReactionTime (s) = " + Car.CAR_DRIVER_REACTION_TIME.ToString("F2", culture) + "\nn";
+                s += "% DriverReactionTime (s) = " + Car.CAR_DRIVER_REACTION_TIME.ToString("F2", culture) + "\n";
+                s += "% AdaptionToNextNextVehicle () = " + Car.CAR_ADAPTION_TO_NEXT_NEXT_VEHICLE.ToString("F2", culture) + "\nn";
                 return s;
             }
             set
