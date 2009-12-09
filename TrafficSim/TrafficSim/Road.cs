@@ -225,7 +225,7 @@ namespace TrafficSim
         {
             get
             {
-                String s = "Time= ";
+                String s = "Time=";
                 s += this.TimeStepSize.ToString("F4", culture);
                 s += ":";
                 s += this.TimeStepSize.ToString("F4", culture);
@@ -245,7 +245,7 @@ namespace TrafficSim
             {
                 String s = "%% Export from TrafficSim.";
                 s += " Date: " + System.DateTime.Today.ToShortDateString();
-                s += " Time: " + System.DateTime.Now.ToShortTimeString() + "\nn";
+                s += " Time: " + System.DateTime.Now.ToShortTimeString() + "\n\n";
 
                 s += "% RoadRadius (m) = " + this.RoadRadius.ToString("F2", culture) + "\n";
                 s += "% RoadLength (m) = " + (this.RoadRadius * 2 * Math.PI).ToString("F2", culture) + "\n";
@@ -259,7 +259,7 @@ namespace TrafficSim
                 s += "% MaxAcceleration (m/(s^2)) = " + Car.CAR_MAX_ACCELERATION.ToString("F2", culture) + "\n";
                 s += "% MaxBrake (m/(s^2)) = " + Car.CAR_MAX_BRAKE.ToString("F2", culture) + "\n";
                 s += "% DriverReactionTime (s) = " + Car.CAR_DRIVER_REACTION_TIME.ToString("F2", culture) + "\n";
-                s += "% AdaptionToNextNextVehicle () = " + Car.CAR_ADAPTION_TO_NEXT_NEXT_VEHICLE.ToString("F2", culture) + "\nn";
+                s += "% AdaptionToNextNextVehicle () = " + Car.CAR_ADAPTION_TO_NEXT_NEXT_VEHICLE.ToString("F2", culture) + "\n\n";
                 return s;
             }
             set
