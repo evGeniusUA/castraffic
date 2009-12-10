@@ -284,7 +284,7 @@ namespace TrafficSim
             this.counter = 0;
         }
 
-        public Road() : this (200 / (2 * Math.PI), 3.5, 0.05, 0.0, 50/3.6)
+        public Road() : this (800 / (2 * Math.PI), 3.5, 0.05, 0.0, 50/3.6)
         {
             // Standard parameters
         }
@@ -338,7 +338,7 @@ namespace TrafficSim
                 v.UpdatePosAndVel();
                 if(counter % 3 == 0)
                 {
-                    if (vehicleCounter % 3 == 0)
+                    if (vehicleCounter == 0)
                     {
                         pos.Add(v.Position.Rad);
                         vel.Add(v.Velocity);
@@ -351,7 +351,7 @@ namespace TrafficSim
             if (counter % 3 == 0)
             {
                 this.positions.Add(pos);
-                //this.velocities.Add(vel);
+                this.velocities.Add(vel);
                 //this.accelerations.Add(acc);
             }
             counter++;
