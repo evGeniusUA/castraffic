@@ -7,12 +7,12 @@ ylabel('Time [m]');
 axis([0 800 0 2000]);
 figure(2);
 hold off;
-plot(Time,Velocity(:,:),'.','MarkerSize',1);
+plot(Time,Velocity(:,:),'-','MarkerSize',1);
 hold on;
 figure(3);
 hold off;
-plot(Time,Acceleration(:,:),'.','MarkerSize',1);
-hold on;
+%plot(Time,Acceleration(:,:),'.','MarkerSize',1);
+%hold on;
 %for i = 1:50
 %    figure(i+4);
 %    plot(Time,Velocity(:,i),'-','MarkerSize',1);
@@ -27,10 +27,16 @@ g = Positions';
 [B,IX] = sort(g);
 f = Velocity';
 
-for j = 1:1:1 %size(f,2);
-    C(:,j) = f(IX(:,j),j); 
-    plot(B(:,j),C(:,j),'MarkerSize',8);
-    axis([0 800 0 50]);
-    pause(0.05);
-end
+%for j = 1:1:1 %size(f,2);
+%    C(:,j) = f(IX(:,j),j); 
+%    plot(B(:,j),C(:,j),'MarkerSize',8);
+%    axis([0 800 0 50]);
+%    pause(0.05);
+%end
+figure(5)
+plot(normaltime,normalvel(:,:),'-','MarkerSize',1);
+hold on;
+plot(acctime,accvel(:,:),'-r','MarkerSize',1);
+plot(eacctime,eaccvel(:,:),'-g','MarkerSize',1);
+
 
