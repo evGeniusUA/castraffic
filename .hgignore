@@ -4,3 +4,8 @@ glob:*/bin/*
 glob:*.ncb
 glob:*.suo
 glob:*.config
+glob:*.aux
+glob:*.log
+glob:*.swp
+glob:*.bbl
+glob:*.blg
