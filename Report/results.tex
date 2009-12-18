@@ -1,4 +1,23 @@
 \section{Results}
+Our simulator was designed to be similar to the experiments made by Sugiyama et al.\ref{sugiyama} since data can be compared. Figure (FIXME::) shows the absolute position on the circular road of all the 60 cars for $ 150 \unit{s}$. In this plot it can be seen that several of the cars come to a complete stop after $30 \unit{s}$. These stops can be characterized as waves \ref{mit} that are moving in the opposite direction of the cars driving direction with a constant speed of (FIXME: speed).\\\\
+
+In figures (FIXME: ) there are data from the simulator when the cars are equipped with ACC and EACC respectively and the jam dynamics can be seen. In these cases the cars are never forced to stop completely. When the cars are equipped with ACC the jams does not occur until after $400 \units{s}$
+
+
+%Lägg till lite text om EACC
+
+
+% Figur av normal förare, ska vi ha alla 3 plottar?
+
+\begin{figure}[h!]
+    \begin{center}
+    \includegraphics[width=0.8\textwidth]{acc_60cars_50kmh.png}
+    \caption{\label{acc_postime}
+Absolute position of 60 cars equipped with adaptive cruise control during $1200 \unit{s}$. Data from simulator. After $400 \unit{s}$ phantom jams are emerging.}
+    \end{center}
+\end{figure}
+
+% Ska vi ha velocityplotten?
 
 \subsection{Comparison of Performance}
 We measure performance of the different systems as average traffic flow

@@ -8,14 +8,29 @@ The three systems described in Sections (FIXME: ref till dessa tre modeller) wer
 The IDM is developed to describe a normal behavior of cars in traffic and hence we have implemented the model in our simulations with only one difference. A delay of the acceleration has been added which represents a reaction time. For human drivers it takes about 1 s to react to changes in traffic \cite{idm}. Our model is then implemented as equations (FIXME: eq) but with a time delay \begin{math}T_r\end{math} which affects the acceleration.
 
 \subsection {Adaptive cruise control }
-The purpose of the ACC is to keep a constant time gap to the car in front and since IDM already has this ability only the reaction time of the model has been changed between the normal driver and ACC-driver. The ACC system is electronically controlled and we believe that the system has a reaction time of about 200 ms.
+The purpose of the ACC is to keep a constant time gap to the car in front and since IDM already has this ability only the reaction time of the model has been changed between the normal driver and ACC-driver. The ACC system is electronically controlled and we believe that the system has a reaction time of about 200 ms. Table \ref{acc_config} shows the parameter setings.
 
 \subsection {Enhanced adaptive cruise control}
 How to implement a system that can adapt to changes further ahead than the car infront is not obvious. In our model we have assumed that the system can get the exact information about the position and velocity of the cars further ahead.
-The dynamics that should be considered from the car in front is the difference of velocity between the two cars. This is implemented in the effective desired distance equation (FIXME: ref till eq IDM s*) from the IDM. The enhanced model was then realized by changing the equation of the desired distance and also include the difference of velocity of the car further ahead. The new effective desired distance then looks like:
+The dynamics that should be considered from the car in front is the difference of velocity between the two cars. This is implemented in the effective desired distance equation (FIXME: ref till eq IDM s*) from the IDM. The enhanced model was then realized by changing the equation of the desired distance and also include the difference of velocity of the car further ahead. To add this feature to the implemented model we changed equation (\ref{desireddist}) to have one extra term.
 
-%Matte om s*
+\begin{equation}s^\ast = s_0 + max(v_\alpha T + (1-\epsilon)\frac{v_\alpha \Delta v}{2\sqrt{ab}} + \epsilon \frac{v_{\alpha\Delta v_2}{2\sqrt{ab}})\end{equation}
 
-where %Matte med delta v .
-Since the enhanced model is controlled similar to the ACC system we also used the same parameters in both systems. 
+where $ \Delta v_2 = v_\alpha - v_{\alpha+2} .
+Since the enhanced model is controlled similar to the ACC system we also used the same parameters in both systems. See table \ref{acc_config} for parameter settings.
+
+\begin{center}
+\begin{table}{H}
+\begin{tabular}{| Paramter | Description | Value |}
+a & Max acceleration & $ 0.73 m/s^2 \\ \hline
+b & Max brake & $ 1.5 m/s^2 $\\ \hline
+T & Time headway & 1.5 s \\ \hline
+$ l $ & Car length & 5 m \\ \hline
+$ T_r $ & Reaction time & 0.2 s \\ \hline
+$ \epsilon $ & Communication influence & 20 \% \\ \hline
+\end{tabular}
+\caption{\label{acc_config} Parameters for the implemented enhanced adaptive cruise control.
+\end{table}
+\end{center}
+
 
