@@ -17,7 +17,7 @@ The dynamics that should be considered from the car in front is the difference o
 \begin{equation}s^\ast = s_0 + max(v_\alpha T + (1-\epsilon )\frac{v_\alpha \Delta v}{2\sqrt{ab}} + \epsilon \frac{v_\alpha \Delta v_2}{2\sqrt{ab}})\end{equation}
 
 where $ \Delta v_2 = v_\alpha - v_{\alpha +2} $.
-Since the enhanced model is controlled similar to the ACC system we also used the same parameters in both systems. See table \ref{acc_config} for parameter settings.
+Since the enhanced model is controlled similar to the ACC system we also used the same parameters in both systems. See table \ref{config} for parameter settings.
 
 \begin{center}
 \begin{table}[H]
@@ -27,10 +27,10 @@ a & Max acceleration & $ 0.73 \unit{m/s^2} $\\ \hline
 b & Max brake & $ 1.5 \unit{m/s^2} $\\ \hline
 T & Time headway & $ 1.5 \unit{s} $ \\ \hline
 $ l $ & Car length & $ 5 \unit{m} $ \\ \hline
-$ T_r $ & Reaction time & $ 0.2 \unit{s} $ \\ \hline
-$ \epsilon $ & Communication influence & $ 20 \% $ \\ \hline
+$ T_r $ & Reaction time & $ 1 \unit{s}, 0.2 \unit{s} $ (normal driver, ACC EACC) \\ \hline
+$ \epsilon $ & Communication influence & $ 20 \% $ (only for EACC) \\ \hline
 \end{tabular}
-\caption{\label{acc_config} Parameters for the implemented enhanced adaptive cruise control.}
+\caption{\label{config} Parameters for the three models.}
 \end{table}
 \end{center}
 
