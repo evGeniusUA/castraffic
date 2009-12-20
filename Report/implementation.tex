@@ -1,62 +1,63 @@
 \section{Simulator setup}
-In the simulator created there was a one-lane circular road with a length of
-800 m. Different amount of cars could be placed on the track corresponding to
+In the created simulator we had a one-lane circular road with a length of
+800 m. Different amounts of cars could be placed on the track corresponding to
 a certain traffic density. During one simulation this meant that the density
 was constant since no cars could be added or removed during one run. Initially
-all cars were positioned equally spaced on the circle, but then every car
+all cars were positioned equally spaced on the circular road, but then every car
 was moved forward randomly between 0 and 1 metre to create some initial
-perturbation that speed up the upcoming of phantom jams. The design of the
-simulator can be seen in Appendix. (FIXME: picture of the simulator).
+perturbation. This speeded up the emergence of phantom jams. The graphical user
+interface of the simulator can be seen in Appendix \ref{gui}.
 
 \subsection{Implementation of mathematical models}
+The Intelligent Driver Model has been used as basis for the controll system
+for all agents (cars). We have done simulations with three different versions:
+
+\begin{comment}
 The three systems described in Sections (FIXME: ref till dessa tre modeller)
 were implemented as described below. Since the simulator used a circular road
 position of the car was transformed into an angle from 0 to 2\begin{math}\pi
 \end{math} but since the acceleration and velocity were not affected by this,
 the car was only aware of a straight road where the car going out in one
 end started over from the other end.
+\end{comment}
 
 \subsubsection {Normal driver}
-The IDM is developed to describe a normal behavior of cars in traffic
-and hence we have implemented the model in our simulations with only one
-difference. A delay of the acceleration has been added which represents a
-reaction time. For human drivers it takes about 1 s to react to changes in
-traffic \cite{idm}. Our model is then implemented as equation(\ref{driver_acc})
-but with a time delay \begin{math}T_r\end{math} which affects the acceleration.
+The IDM was developed to describe a normal behavior of cars in traffic
+and hence for our normal driver, we have implemented the model with only one
+modification. A delay of the acceleration has been added which represents a
+human reaction time. For human drivers it takes about 1 s to react to changes in
+traffic \cite{idm}. Our model is then implemented as equation (\ref{driver_acc})
+but with a time delay \begin{math}T_r\end{math}.
 
-\subsubsection {Adaptive cruise control }
+\subsubsection{Adaptive Cruise Control}
 The purpose of the ACC is to keep a constant time gap to the car in front
 and since IDM already has this ability only the reaction time of the model
 has been changed between the normal driver and ACC-driver. The ACC system
-is electronically controlled and we believe that the system has a reaction
-time of about 200 ms. Table \ref{acc_config} shows the parameter setings.
+is electronically controlled and we assumed that the system has a reaction
+time of about 200 ms. Table \ref{config} shows the parameter settings.
 
-\subsubsection {Enhanced adaptive cruise control}
-How to implement a system that can adapt to changes further ahead than the
-car infront is not obvious. In our model we have assumed that the system
-can get the exact information about the position and velocity of the cars
-further ahead.  The dynamics that should be considered from the car in front
-is the difference of velocity between the two cars. This is implemented in
-the effective desired distance equation (\ref{desireddist}) from
-the IDM. The enhanced model was then realized by changing the equation of
-the desired distance and also include the difference of velocity of the
-car further ahead. To add this feature to the implemented model we changed
-equation (\ref{desireddist}) to have one extra term.
-
+\subsubsection{Enhanced Adaptive Cruise Control}
+It is not obvious how to implement a system that can adapt to changes further
+ahead than the car in front. In our model we have assumed that the system
+can get the information about the position and velocity of a car one step further
+ahead. The data was used to the calculate the difference
+in velocity of the two cars. This was then implemented through the effective desired
+distance equation (\ref{desireddist}) from the IDM:
+ 
 \begin{equation}
-s^\ast = s_0 + max(v_\alpha T + (1-\epsilon
+s^\ast = s_0 + max \left (v_\alpha T + (1-\epsilon
 )\frac{v_\alpha \Delta v}{2\sqrt{ab}} + \epsilon \frac{v_\alpha \Delta
-v_2}{2\sqrt{ab}})
+v_2}{2\sqrt{ab}}\right )
 \end{equation}
 
-where $ \Delta v_2 = v_\alpha - v_{\alpha +2} $.  Since the enhanced model
-is controlled similar to the ACC system we also used the same parameters in
-both systems. See table \ref{config} for parameter settings.
+where $ \Delta v_2 = v_\alpha - v_{\alpha +2} $. Otherwise the system is
+similar to the ACC system and we have used the same parameters in both
+systems. See table \ref{config} for parameter settings.
 
 \begin{center}
 \begin{table}[H]
 \begin{tabular}{| l | l | l |} \hline
-Paramter & Description & Value\\ \hline
+\emph{Paramter} & \emph{Description} & \emph{Value}\\ \hline
 a & Max acceleration & $ 0.73 \unit{m/s^2} $\\ \hline
 b & Max brake & $ 1.5 \unit{m/s^2} $\\ \hline
 T & Time headway & $ 1.5 \unit{s} $ \\ \hline
