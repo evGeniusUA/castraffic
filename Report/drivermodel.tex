@@ -5,7 +5,8 @@ models describe the complete traffic flow. Since microscopic models describe the
 and velocity of each car in the simulation, they can easier be compared with
 empirical data from real experiments than macroscopic models. The Intelligent Driver Model (IDM)
 is a car-following model and belongs to the deterministic kind of microscopic
-models \cite{idm}.\\\\
+models \cite{idm}.
+
 The IDM controls the position of the car on a single-lane road. The position depends on the velocity and acceleration of the car. Acceleration is described by the velocity \begin{math}v_\alpha\end{math} and distance to the car in front \begin{math}s_\alpha\end{math}. These two parts are related to the desired velocity \begin{math}v_0\end{math} and effective desired distance \begin{math}s^\ast\end{math}. The equation for acceleration then becomes:
 \begin{equation}\label{driver_acc}\dot{v_\alpha} = a\left
 (1-(\frac{v_\alpha}{v_0})^\delta-(\frac{s^\ast}{s_0})^2 \right)\end{equation}
