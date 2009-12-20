@@ -1,0 +1,69 @@
+\documentclass[a4paper, english, fullpage]{article}
+
+
+% FOR UTF-8?
+\usepackage{ucs}
+\usepackage{here}   %Put figs at location when using H
+\usepackage[utf8x]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage[final]{pdfpages}
+%\setlength{\parindent}{0in}
+\graphicspath{{./images/}}
+
+%Nicer margins
+\addtolength{\voffset}{-35pt}
+\addtolength{\textheight}{75pt}
+
+% No windows or orphans
+\widowpenalty=500
+\clubpenalty=500
+
+%Commands
+\newcommand{\unit}[1]{\ensuremath{\, \mathrm{#1}}}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FRAMSIDA
+\title{{\Huge Avoiding phantom jams in traffic}\\[0.5cm]
+- Simulations with agent-based models}
+\date{December 18, 2009}
+\author{Simon Lindkvist \and Sebastian Johansson}
+ 
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SAMMANFATTNING
+%\newpage
+\input{summary}
+
+
+
+%Introduction and problem definition
+%	Phantom jams
+\input{introduction}	
+
+%Driver model
+\input{drivermodel}
+
+%Methods to reduce
+\input{acc}
+
+%Simulator and implementation of the three methods
+\input{implementation}
+
+%Results
+\input{results}
+
+%Discussion
+\input{discussion}
+
+\bibliographystyle{plain}
+\bibliography{referenser}
+
+%% APPENDIX
+\appendix
+\input{appendix}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
