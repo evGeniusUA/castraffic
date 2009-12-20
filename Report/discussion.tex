@@ -1,0 +1,56 @@
+\section{Conclusion}
+Real-world traffic systems are complex, composed of light and heavy vehicles,
+complex road systems, individual drivers etc. We have chosen to work
+with a minimalistic model, still capable of reproducing phantom jams as
+observed in real-world traffic.\\\\
+
+We have investigated two systems that show promising results in our
+simulations compared to a \emph{normal driver}. The normal driver used in our
+simulations is, however, not a normal driver. It is capable of perfectly assessing
+the distance to and the velocity of, the vehicle if front of it. All cars also
+share the same driver model. In fact, the only thing separating the normal
+driver system from the ACC system is the reaction time. We have done some
+simulations with mixtures of vehicles with different dynamics and with
+non-deterministic driver models. Our impression is that this worsens the
+problem with phantom jams, and reduces traffic flow further. We also believe
+that ACC and EACC has the ability to stabilize these systems, which more closely
+resembles reality, and expect the performance gap to normal drivers to be even
+larger in reality. But, more investigations and simulations on the topic is
+need.\\\\
+
+So, what's the catch? Using systems such as ACC and EACC in real world
+situations to improve road capacity might not be a straight-forward task. G.
+Marsden et al. address some of the problems with ACC in \emph{Towards an
+understanding of adaptive cruise control} \cite{accCritics}; A lane with ACC
+vehicles can experience increased instability, compared with manual driving,
+in some traffic situations. For instance, when a manually controlled vehicle
+cut in between two ACC vehicles, a sharp deceleration caused by the suddenly
+decreased time-gap might start a travelling traffic jam. Also, speed and
+traffic capacity has been shown to vary with ACC target time-gaps and
+penetration rates.\\\\
+
+% Förare stänger idag av systemen i dense traffic - inte avsedda för detta
+% idag? cite??
+
+%dynamics vary with time-gap and implementeringsgrad % Nu ett stycke med
+%nackdelar, svårigheter och % fråga kring effekter av implementeringsgrad:
+%Inte helt simpelt - adc kan öka problem \cite!  Utformning av eadc, förslag
+%och potential. Vår ide - men finns förslag \cite!  eacc behöver väldigt hög
+%implementeringsgrad eftersom de inte kan kommunicera annars Undersök effekter
+%av implementeringsgrad.
+
+%% Sum -up conclusion
+To sum up; Traffic jams constitute a severe problem in the world today.
+Building new roads or modifying old road systems to reduce jams and improve
+road performance costs huge amounts of money. Our simulations clearly
+indicates that automatic or semi-automatic vehicle control systems have the
+potential to shift the critical level of traffic density at which phantom jams
+occur upwards. Also, the performance penalty for any occurring jams is
+reduced. This means that, if such is systems are successfully implemented,
+existing roads could handle heavier or much heavier traffic.
+
+\section*{Acknowledgements}
+This work was performed as part of the course \emph{Simulation of Complex
+Systems} at Chalmers University of Technology. Thanks to our advisor
+Kolbj{\o}rn Tunstr{\o}m.
+
