@@ -1,11 +1,10 @@
 \section{Results}
 Our simulator was designed to be similar to the experiments made by Sugiyama
-et al.\cite{sugiyama} since data can be compared. Figure (FIXME::) shows
-the absolute position on the circular road of all the 60 cars with normal
+et al.\cite{sugiyama} since data can be compared. Figure \ref{normal_postime} shows the absolute position on the circular road of all the 60 cars with normal
 drivers for $ 150 \unit{s} $. In this plot it can be seen that several of the
 cars come to a complete stop after $ 30 \unit{s} $. These stops can then be
 characterized as waves \cite{mit} that are moving backwards in the lane with
-a constant speed of (FIXME: speed).\\\\
+a constant speed of $ 13 \unit{km/h} $.\\\\
 
 In figures (FIXME: ) there are data from the simulator when the cars are
 equipped with ACC and EACC respectively and the jam dynamics can be seen. In
@@ -13,7 +12,7 @@ these cases the cars are never forced to stop completely. When the cars
 are equipped with ACC the jams does not occur until after $ 300 \unit{s}
 $. If they instead are equipped with the enhanced model the jams do not occur
 until after $ 1200 \unit{s} $. In both these cases the waves are travelling
-backwards in a speed of $ (FIXME:) 18 \unit{km/h} $.
+backwards in a speed of $ 15 \unit{km/h} $.
 
 
 \begin{figure}[h!]
@@ -24,7 +23,14 @@ Absolute position of 60 cars for $ 150 \unit{s} $. Data from simulator. After $ 
     \end{center}
 \end{figure}
 
-% Ska vi ha velocityplotten?
+Differences between the systems can easily be seen in Figure \ref{velocity}. In the model with a normal driver instability occurs almost immediately and on many occasions the car is forced to a complete stop. When the ACC-system is implemented there are still large oscillations but they occur later and the average velocity is higher than the normal driver. The enhanced model is able to to keep the traffic stable for about $ 800 \unit{s} $ and then oscillations occur.
+
+\begin{figure}[h!]
+    \begin{center}
+    \includegraphics[width=0.8\textwidth]{velocity.png}
+    \caption{\label{velocity}Velocity of one specific car on the road during 2000 seconds and using the three different models.}
+    \end{center}
+\end{figure}
 
 \subsection{Comparison of Performance}
 We measure performance of the different systems as average traffic flow
