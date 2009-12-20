@@ -9,8 +9,8 @@ perturbation. This speeded up the emergence of phantom jams. The graphical user
 interface of the simulator can be seen in Appendix \ref{gui}.
 
 \subsection{Implementation of mathematical models}
-The Intelligent Driver Model has been used as basis for the controll system
-for all agents (cars). We have done simulations with three different versions:
+The Intelligent Driver Model has been used as basis for the control system
+for all agents (cars). We have done simulations with three different versions.
 
 \begin{comment}
 The three systems described in Sections (FIXME: ref till dessa tre modeller)
@@ -42,7 +42,7 @@ ahead than the car in front. In our model we have assumed that the system
 can get the information about the position and velocity of a car one step further
 ahead. The data was used to the calculate the difference
 in velocity of the two cars. This was then implemented through the effective desired
-distance equation (\ref{desireddist}) from the IDM:
+distance equation (\ref{desireddist}) from the IDM and resulted in the followin equation:
  
 \begin{equation}
 s^\ast = s_0 + max \left (v_\alpha T + (1-\epsilon
