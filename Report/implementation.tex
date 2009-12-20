@@ -1,0 +1,72 @@
+\section{Simulator setup}
+In the created simulator we had a one-lane circular road with a length of
+800 m. Different amounts of cars could be placed on the track corresponding to
+a certain traffic density. During one simulation this meant that the density
+was constant since no cars could be added or removed during one run. Initially
+all cars were positioned equally spaced on the circular road, but then every car
+was moved forward randomly between 0 and 1 metre to create some initial
+perturbation. This speeded up the emergence of phantom jams. The graphical user
+interface of the simulator can be seen in Appendix \ref{gui}.
+
+\subsection{Implementation of mathematical models}
+The Intelligent Driver Model has been used as basis for the control system
+for all agents (cars). We have done simulations with three different versions.
+
+\begin{comment}
+The three systems described in Sections (FIXME: ref till dessa tre modeller)
+were implemented as described below. Since the simulator used a circular road
+position of the car was transformed into an angle from 0 to 2\begin{math}\pi
+\end{math} but since the acceleration and velocity were not affected by this,
+the car was only aware of a straight road where the car going out in one
+end started over from the other end.
+\end{comment}
+
+\subsubsection {Normal driver}
+The IDM was developed to describe a normal behavior of cars in traffic
+and hence for our normal driver, we have implemented the model with only one
+modification. A delay of the acceleration has been added which represents a
+human reaction time. For human drivers it takes about 1 s to react to changes in
+traffic \cite{idm}. Our model is then implemented as equation (\ref{driver_acc})
+but with a time delay \begin{math}T_r\end{math}.
+
+\subsubsection{Adaptive Cruise Control}
+The purpose of the ACC is to keep a constant time gap to the car in front
+and since IDM already has this ability only the reaction time of the model
+has been changed between the normal driver and ACC-driver. The ACC system
+is electronically controlled and we assumed that the system has a reaction
+time of about 200 ms. Table \ref{config} shows the parameter settings.
+
+\subsubsection{Enhanced Adaptive Cruise Control}
+It is not obvious how to implement a system that can adapt to changes further
+ahead than the car in front. In our model we have assumed that the system
+can get the information about the position and velocity of a car one step further
+ahead. The data was used to the calculate the difference
+in velocity of the two cars. This was then implemented through the effective desired
+distance equation (\ref{desireddist}) from the IDM and resulted in the followin equation:
+ 
+\begin{equation}
+s^\ast = s_0 + max \left (v_\alpha T + (1-\epsilon
+)\frac{v_\alpha \Delta v}{2\sqrt{ab}} + \epsilon \frac{v_\alpha \Delta
+v_2}{2\sqrt{ab}}\right )
+\end{equation}
+
+where $ \Delta v_2 = v_\alpha - v_{\alpha +2} $. Otherwise the system is
+similar to the ACC system and we have used the same parameters in both
+systems. See table \ref{config} for parameter settings.
+
+\begin{center}
+\begin{table}[H]
+\begin{tabular}{| l | l | l |} \hline
+\emph{Paramter} & \emph{Description} & \emph{Value}\\ \hline
+a & Max acceleration & $ 0.73 \unit{m/s^2} $\\ \hline
+b & Max brake & $ 1.5 \unit{m/s^2} $\\ \hline
+T & Time headway & $ 1.5 \unit{s} $ \\ \hline
+$ l $ & Car length & $ 5 \unit{m} $ \\ \hline
+$ T_r $ & Reaction time & $ 1 \unit{s}, 0.2 \unit{s} $ (normal driver, ACC\/ EACC) \\ \hline
+$ \epsilon $ & Communication influence & $ 20 \% $ (only for EACC) \\ \hline
+\end{tabular}
+\caption{\label{config} Parameters for the three models.}
+\end{table}
+\end{center}
+
+
