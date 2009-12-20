@@ -5,9 +5,9 @@ shows the absolute position on the circular road of 60 cars with
 normal drivers for $ 150 \unit{s} $. In this plot it can be seen that several
 of the cars came to a complete stop after $ 30 \unit{s} $. These stops can
 then be characterized as waves \cite{mit} moving backwards in the
-lane with a constant speed of $ 13 \unit{km/h} $.\\\\
+lane with a constant speed of $ 13 \unit{km/h} $.
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \begin{center}
     \includegraphics[width=1.0\textwidth]{normal_60cars_50kmh.png}
     \caption{\label{normal_postime}
@@ -15,13 +15,12 @@ Absolute position of 60 cars for $ 150 \unit{s} $. Data from simulator. After
 $ 30 \unit{s} $ phantom jams were emerging.}
     \end{center}
 \end{figure}
-
 Simular plots for cars equipped with ACC and EACC can be seen in
 Appendix \ref{app_postime_plot}. In these cases the cars were never forced to
 stop completely. When the cars were equipped with ACC the jams did not occur
 until after $ 300 \unit{s} $. If they instead were equipped with the enhanced
 model the jams did not occur until after $ 1200 \unit{s} $. In both these
-cases the waves were travelling backwards at a speed of $ 15 \unit{km/h} $.\\\\
+cases the waves were travelling backwards at a speed of $ 15 \unit{km/h} $.
 
 \begin{figure}[h!]
     \begin{center}
@@ -31,7 +30,6 @@ cases the waves were travelling backwards at a speed of $ 15 \unit{km/h} $.\\\\
 curve ACC. Green curve - EACC.}
     \end{center}
 \end{figure}
-
 The differences between the systems is clearly illustrated by data in figure
 \ref{velocity}. In the model with a normal driver instability occured almost
 immediately and on many occasions the car was forced to a complete stop. When
@@ -44,8 +42,7 @@ driver. The enhanced model was able to to keep the traffic stable for about $
 We measured performance of the different systems as average traffic flow
 $ [\unit{vehicles/h}] $ as a function of average traffic density
 $ [\unit{vehicles/km}] $. The speed limit was fixed to $ 50 \unit{km/h} $ in all
-experiments. Data is presented in fig \ref{performance}.\\\\
-
+experiments. Data is presented in figure \ref{performance}.
 \begin{figure}[h!]
     \begin{center}
     \includegraphics[width=1.0\textwidth]{flowdensity_2.png}
@@ -54,7 +51,6 @@ Traffic flow as a function of traffic density. Data from simulator.
 $SpeedLimit=50 \unit{km/h}$. Traffic flow was measured when traffic conditions had stabilized.}
     \end{center}
 \end{figure}
-
 Initially, the performance of all three systems grow linearly as traffic
 was light enough to allow all cars to keep maximum allowed speed. As traffic
 grew denser, the cars had to slow down to keep constant time headway. All
